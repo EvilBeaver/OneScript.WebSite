@@ -11,8 +11,8 @@ a:hover,
 
 .header-logo-style {
     color: var(--global-color-theme) !important;  
-    font-weight: 400;
-    font-size: 25px;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .btn-orange {
@@ -51,9 +51,9 @@ a:hover,
 
   .header-infoblock {
     background-color: #282c34; 
-    margin-top: 60px;
-    padding-top: 25pt;
-    padding-bottom: 20pt;
+    margin-top: 55px;
+    padding-top: 40pt;
+    padding-bottom: 40pt;
   }
 
   .footer-infoblock
