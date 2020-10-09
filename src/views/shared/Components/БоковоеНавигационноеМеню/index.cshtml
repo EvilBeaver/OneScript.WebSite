@@ -1,37 +1,28 @@
 <div id="navigation" class="sidebar-right">
-    <div class="side-panel-group" id="side-nav-menu" role="tablist" aria-multiselectable="true">
-        @foreach(var РазделНавигации in @Model.БоковоеНавигационноеМеню.ЭлементыМеню) {
-            <div class="panel side-panel-default">
-                <div class="panel-heading" role="tab" id="heading-@РазделНавигации.Идентификатор">
+    <div class="" id="side-nav-menu" role="tablist" aria-multiselectable="true">
+        @foreach(var СтрокаНавигации in @Model.Строки) {
+            @if(СтрокаНавигации.Тип == "Статья"){
+                <div class="side-panel-item">
+                    <a asp-controller="content" asp-action="markdown" asp-article="@СтрокаНавигации.Имя">@СтрокаНавигации.Представление</a>
+                </div>
+            }
+            else {
+                <div class="panel-heading">
                     <h4 class="side-panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#side-nav-menu" href="#collapse-@РазделНавигации.Идентификатор" data-target="#collapse-@РазделНавигации.Идентификатор"
-                            aria-expanded="false" aria-controls="collapse-@РазделНавигации.Идентификатор">
-                            @РазделНавигации.ИмяРаздела
-                        </a>
-                    </h4>   
-                </div>  
-                <div id="collapse-@РазделНавигации.Идентификатор" class="panel-collapse collapse @РазделНавигации.РазделАктивен" data-parent="#side-nav-menu" aria-labelledby="heading-@РазделНавигации.Идентификатор">
-                    <div class="side-panel-body">
-                        <ul class="side-nav-list list-group">
-                             @foreach(var СтраницаРаздела in @РазделНавигации.Страницы) {
-                                <li class="list-group-item">
-                                    <a href="/@СтраницаРаздела.Ссылка">@СтраницаРаздела.Заголовок</a>
-                                    @{
-                                        try{
-                                            @if (@СтраницаРаздела.Активная == true){
-                                                <span class="side-element-panel-active"/>
-                                            }
-                                        }
-                                        catch{}
-                                    }
-                                </li>
-                            }
-                        </ul>
-                    </div>
-                </div>  
-            </div>
-        }      
+                        <a role="button" data-toggle="collapse" data-target="#items-@СтрокаНавигации.Имя" 
+                        aria-expanded="@(СтрокаНавигации.Активность == true)">@СтрокаНавигации.Представление</a>
+                    </h4>
+                </div>
+                <div id="items-@СтрокаНавигации.Имя" data-parent="#side-nav-menu" class="collapse @(СтрокаНавигации.Активность == true? "show":"")">
+                    <ul class="side-nav-list list-group ">
+                        @foreach(var Статья in СтрокаНавигации.Строки){
+                            <li class="side-panel-item list-group-item @(Статья.Активность == true? "active":"")">
+                                <a href="/@Статья.Имя">@Статья.Представление</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+        }
     </div>
 </div>
-
-                   
