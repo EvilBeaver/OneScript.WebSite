@@ -23,6 +23,8 @@ export default defineConfig({
 
   lang: 'ru-RU',
 
+  base: '/OneScript.WebSite',
+
   srcDir: 'docs',
 
   cleanUrls: true,
