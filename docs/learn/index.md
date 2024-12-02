@@ -27,5 +27,5 @@ OneScript это независимая кросс-платформенная р
 * Работа со сторонними REST-API
 * Тестирование
 * Управление кластером серверов 1С
-* Continuos Intergation 
+* Continuos Integration 
 * и многое другое

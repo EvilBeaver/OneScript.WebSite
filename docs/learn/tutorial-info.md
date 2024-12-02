@@ -62,7 +62,7 @@
 
 Наш скрипт готов. Запустим его на выполнение. Откроем встроенный терминал VS Code из меню Terminal -> New Terminal
 
-```cmd
+```sh
 oscript sys-info.os
 ```
 
