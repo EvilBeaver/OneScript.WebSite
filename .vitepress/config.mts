@@ -29,6 +29,10 @@ export default defineConfig({
 
   lastUpdated: true,
 
+  ignoreDeadLinks: [
+    '/downloads/index'
+  ],
+
   locales: {
     root: {
       label: 'Русский',
