@@ -1,0 +1,46 @@
+name: Build & Deploy VitePress to GitHub Pages
+
+on:
+  push:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '23'  # Use the Node.js version compatible with VitePress
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the site
+        run: npm run docs:build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./.vitepress/dist/"
+  
+  deploy:
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+      
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref_name == 'new_site_front'
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

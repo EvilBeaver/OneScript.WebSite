@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "OneScript",
-  description: "OneScript. Официальная документация, релизы справка, синтакс-помощник",
+  description: "OneScript. Официальная документация, релизы, справка, синтакс-помощник",
 
   appearance: 'dark',
 
@@ -21,17 +21,19 @@ export default defineConfig({
   //   ['link', { rel: 'icon', href: '/docs/favicon.ico' }]
   // ],
 
-  // markdown: {
-  //   languages: [bslLanguage],
-  // },
-
   lang: 'ru-RU',
+
+  base: '/OneScript.WebSite',
 
   srcDir: 'docs',
 
   cleanUrls: true,
 
   lastUpdated: true,
+
+  ignoreDeadLinks: [
+    '/downloads/index'
+  ],
 
   locales: {
     root: {
