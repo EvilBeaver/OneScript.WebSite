@@ -86,7 +86,7 @@ export default defineConfig({
             { text: 'Основы синтаксиса', link: '/learn/syntax-basics'},
             { text: 'Корпоративным пользователям', link: '/learn/enterprise'},
           ]
-        },
+        }
       ]
     },
 
