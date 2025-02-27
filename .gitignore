@@ -1,3 +1,4 @@
 frontend/.vitepress/cache
 frontend/.vitepress/dist
 node_modules
+oscript_modules
