@@ -1,5 +1,8 @@
 import { defineConfig } from 'vitepress'
 
+// Import lightbox plugin
+import lightbox from "vitepress-plugin-lightbox"
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "OneScript",
@@ -50,6 +53,10 @@ export default defineConfig({
       dangerLabel: 'Осторожно',
       infoLabel: 'Информация',
       detailsLabel: 'Подробнее'
+    },
+    config: (md) => {
+      // Use lightbox plugin
+      md.use(lightbox, {});
     }
   },
 
