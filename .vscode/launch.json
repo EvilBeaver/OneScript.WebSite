@@ -1,0 +1,22 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Отладка 1Script",
+            "type": "oscript",
+            "request": "launch",
+            "program": "src/main.os",
+            "args": [],
+            "cwd": "${workspaceRoot}/backend",
+            "env": {
+                "OSCRIPT_CONFIG": "lib.system=C:/Users/ovsia/AppData/Local/ovm/current/lib"
+            },
+            "runtimeExecutable": " E:/gits/EvilBeaver/OneScript/src/oscript/bin/Debug/net6.0/oscript.exe",
+            "runtimeArgs": [],
+            "debugPort": 2801
+        }
+    ]
+}
