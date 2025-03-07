@@ -14,7 +14,7 @@
             "env": {
                 "OSCRIPT_CONFIG": "lib.system=C:/Users/ovsia/AppData/Local/ovm/current/lib"
             },
-            "runtimeExecutable": " E:/gits/EvilBeaver/OneScript/src/oscript/bin/Debug/net6.0/oscript.exe",
+            "runtimeExecutable": "E:/gits/EvilBeaver/OneScript/src/oscript/bin/Debug/net6.0/oscript.exe",
             "runtimeArgs": [],
             "debugPort": 2801
         }
