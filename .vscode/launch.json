@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Отладка 1Script",
+            "name": "Local Develop 1Script",
             "type": "oscript",
             "request": "launch",
             "program": "src/main.os",
@@ -15,6 +15,16 @@
                 "OSCRIPT_CONFIG": "lib.system=C:/Users/ovsia/AppData/Local/ovm/current/lib"
             },
             "runtimeExecutable": "E:/gits/EvilBeaver/OneScript/src/oscript/bin/Debug/net6.0/oscript.exe",
+            "runtimeArgs": [],
+            "debugPort": 2801
+        },
+        {
+            "name": "1Script",
+            "type": "oscript",
+            "request": "launch",
+            "program": "src/main.os",
+            "args": [],
+            "cwd": "${workspaceRoot}/backend",
             "runtimeArgs": [],
             "debugPort": 2801
         }
