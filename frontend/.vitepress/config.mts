@@ -27,6 +27,7 @@ export default defineConfig({
   base: '/',
 
   srcDir: 'docs',
+  outDir: '../backend/files/wwwroot',
 
   cleanUrls: true,
 
@@ -150,5 +151,11 @@ export default defineConfig({
     darkModeSwitchTitle: 'Переключить на тёмную тему',
     sidebarMenuLabel: 'Меню',
     returnToTopLabel: 'Вернуться к началу',
-  }
+  },
+  
+  async transformPageData(pageData, _) {
+    if (pageData.params?.version) {
+      pageData.title = `Версия ${pageData.params.version}`;
+    }
+  },
 })

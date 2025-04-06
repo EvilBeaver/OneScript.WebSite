@@ -14,7 +14,7 @@ onMounted(async () => {
 <template>
     <div>
       <ul v-for="release of versions">
-              <li><a :href="`http://localhost:3030/archive/${release}`">{{release}}</a></li>
+              <li><a :href="`http://localhost:3030/downloads/archive/${release}`">{{release}}</a></li>
         </ul>
     </div>
 </template>

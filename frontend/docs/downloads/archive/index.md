@@ -1,5 +1,11 @@
+---
+aside: false
+prev: false
+next: false
+---
+
 <script setup>
-import Archive from '../components/Archive.vue'
+import Archive from '../../components/Archive.vue'
 </script>
 
 # Архив версий

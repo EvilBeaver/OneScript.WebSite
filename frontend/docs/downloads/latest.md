@@ -1,5 +1,7 @@
 ---
 aside: false
+prev: false
+next: false
 ---
 
 <script setup>
