@@ -1,7 +1,7 @@
 <script setup type="module" lang="ts">
 import { ref, onMounted } from 'vue'
 import MarkdownIt from "markdown-it";
-import axios from 'axios'
+import axios from 'axios';
 
 const markdown = new MarkdownIt();
 
@@ -14,4 +14,20 @@ onMounted(async () => {
 
 </script>
 
-<div v-html="markdown.render(release.body)" />
+<style module>
+
+.embed-markdown > h1 {
+    font-size: 20px !important;
+}
+
+.embed-markdown > h2 {
+    font-size: 18px !important;
+    margin-top: 10px !important;
+}
+
+</style>
+
+<template>
+  <div v-html="markdown.render(content)" :class="$style['embed-markdown']"/>
+</template>
+

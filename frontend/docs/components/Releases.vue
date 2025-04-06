@@ -33,8 +33,8 @@ onMounted(async () => {
               <th>Дата изменения</th>
             </tr>
           </thead>
-          <tbody v-for="distr of files">
-            <tr>
+          <tbody>
+            <tr v-for="distr of files">
               <td><a :href="distr.link">{{ distr.filename }}</a></td>
               <td>{{ distr.distType }}</td>
               <td>{{ distr.arch }}</td>

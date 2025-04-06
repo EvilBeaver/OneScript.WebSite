@@ -8,8 +8,6 @@ export default defineConfig({
   title: "OneScript",
   description: "OneScript. Официальная документация, релизы, справка, синтакс-помощник",
 
-  appearance: 'dark',
-
   // TODO cделать яндекс-метрику и иконку favicon
   // head: [
   //   [
@@ -92,6 +90,19 @@ export default defineConfig({
             { text: 'Библиотеки', link: '/learn/libraries'},
             { text: 'Основы синтаксиса', link: '/learn/syntax-basics'},
             { text: 'Корпоративным пользователям', link: '/learn/enterprise'},
+          ]
+        }
+      ],
+      '/downloads': [
+        {
+          text: 'Файлы для скачивания',
+          items: [
+            { text: 'Главное', link: '/downloads' },
+            { text: 'Актуальная версия', link: '/downloads/latest' },
+            { text: 'Ознакомительная версия', link: '/downloads/preview' },
+            { text: 'Версия LTS', link: '/downloads/lts' },
+            { text: 'Версии в разработке', link: '/downloads/development' },
+            { text: 'Архив версий', link: '/downloads/archive' },
           ]
         }
       ]
