@@ -1,33 +1,46 @@
-<script setup type="module">
-import { ref } from 'vue';
-import { Octokit } from "@octokit/core";
-import MarkdownIt from "markdown-it";
+<script setup type="module" lang="ts">
 
-const markdown = new MarkdownIt();
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
 
-const octokit = new Octokit({
-  // auth: ''
-})
+const props = defineProps(['versionToken']);
 
-const releasesData = await octokit.request('GET /repos/{owner}/{repo}/releases', {
-  owner: 'EvilBeaver',
-  repo: 'OneScript',
-  headers: {
-    'X-GitHub-Api-Version': '2022-11-28'
-  }
-})
+interface DistDescription {
+  id: string,
+  filename: string,
+  arch: string,
+  distType: string,
+  modified: string,
+  link: string
+}
 
-const releases = ref(releasesData.data);
+const files = ref([] as DistDescription[]);
+
+onMounted(async () => {
+  files.value = (await axios.get('http://localhost:3030/api/archive/' + props.versionToken)).data;
+});
 
 </script>
 
 <template>
     <div>
-        <h1>Releases</h1>
-
-        <div v-for="release in releases">
-            <div v-html="markdown.render(release.body)" />
-        </div>
-
+      <table tabindex="0">
+          <thead>
+            <tr>
+              <th>Имя файла</th>
+              <th>Вид дистрибутива</th>
+              <th>Архитектура</th>
+              <th>Дата изменения</th>
+            </tr>
+          </thead>
+          <tbody v-for="distr of files">
+            <tr>
+              <td><a :href="distr.link">{{ distr.filename }}</a></td>
+              <td>{{ distr.distType }}</td>
+              <td>{{ distr.arch }}</td>
+              <td>{{ distr.modified }}</td>
+            </tr>
+          </tbody>
+        </table>
     </div>
 </template>

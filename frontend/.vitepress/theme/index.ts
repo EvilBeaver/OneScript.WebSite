@@ -8,6 +8,5 @@ export default {
   extends: DefaultTheme,
   Layout: Layout,
   enhanceApp({ app, router, siteData }) {
-    // ...
   }
 } satisfies Theme
