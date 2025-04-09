@@ -87,10 +87,17 @@ export default defineConfig({
             { text: 'Устройство и инфраструктура', link: '/learn/infra'},
             { text: 'Отладка', link: '/learn/debug'},
             { text: 'Тестирование', link: '/learn/testing'},
-            { text: 'Конфигурация', link: '/learn/config'},
             { text: 'Библиотеки', link: '/learn/libraries'},
             { text: 'Основы синтаксиса', link: '/learn/syntax-basics'},
             { text: 'Корпоративным пользователям', link: '/learn/enterprise'},
+          ]
+        },
+        {
+          text: 'Особенности и настройки',
+          items: [
+            { text: 'Конфигурация', link: '/learn/config'},
+            { text: 'Native Mode', link: '/learn/native'},
+            { text: 'Расширенные возможности', link: '/learn/advanced-usage'},
           ]
         }
       ],

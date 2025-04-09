@@ -10,11 +10,7 @@ import ReleaseDocs from '../components/ReleaseDocs.vue'
 
 # Скачать OneScript
 
-Все самое интересное начинается здесь. Выберите вашу версию.
-
-## Актуальная версия
-
-<small>Последняя выпущенная стабильная версия</small>
+<b>Последняя выпущенная стабильная версия</b>
 
 <Releases versionToken="latest" />
 <ReleaseDocs versionToken="latest" />
