@@ -9,12 +9,16 @@ onMounted(async () => {
   versions.value = (await axios.get('http://localhost:3030/api/archive')).data;
 });
 
+function versionPresentation(token: string): string {
+  return token.replaceAll('_', '.');
+} 
+
 </script>
 
 <template>
     <div>
       <ul v-for="release of versions">
-              <li><a :href="`http://localhost:3030/downloads/archive/${release}`">{{release}}</a></li>
+              <li><a :href="`http://localhost:3030/downloads/archive/${release}`">{{versionPresentation(release)}}</a></li>
         </ul>
     </div>
 </template>
