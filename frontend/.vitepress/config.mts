@@ -31,7 +31,7 @@ export default defineConfig({
 
   cleanUrls: true,
 
-  lastUpdated: true,
+  lastUpdated: false,
 
   ignoreDeadLinks: [
     '/downloads/index'
