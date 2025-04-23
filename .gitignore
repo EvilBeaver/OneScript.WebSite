@@ -3,3 +3,4 @@ frontend/.vitepress/dist
 backend/files
 node_modules
 oscript_modules
+frontend/docs/syntax

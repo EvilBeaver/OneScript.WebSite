@@ -1,4 +1,6 @@
-import { defineConfig } from 'vitepress'
+import { DefaultTheme, defineConfig } from 'vitepress'
+import fs from 'fs';
+import path from 'path';
 
 // Import lightbox plugin
 import lightbox from "vitepress-plugin-lightbox"
@@ -113,7 +115,8 @@ export default defineConfig({
             { text: 'Архив версий', link: '/downloads/archive' },
           ]
         }
-      ]
+      ],
+      '/syntax': loadSyntaxSidebar('docs/syntax')
     },
 
     socialLinks: [
@@ -166,3 +169,17 @@ export default defineConfig({
     }
   },
 })
+
+function loadSyntaxSidebar(contentDir: string): DefaultTheme.SidebarItem[] {
+  const lookupFolder = `${process.cwd()}/${contentDir}`;
+  
+  const tocFile = path.join(lookupFolder, 'vitepress-toc.json');
+  if (!fs.existsSync(tocFile)) {
+    return [];
+  }
+
+  const fileContent = fs.readFileSync(tocFile, {encoding: 'utf-8'});
+  
+  return JSON.parse(fileContent) as DefaultTheme.SidebarItem[];
+}
+
