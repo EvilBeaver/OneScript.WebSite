@@ -116,7 +116,14 @@ export default defineConfig({
           ]
         }
       ],
-      '/syntax': loadSyntaxSidebar('docs/syntax')
+      '/syntax': loadSyntaxSidebar('docs/syntax'),
+      '/community': [
+        { text: 'Сообщество', link: '/community' },
+        { text: 'Я хочу помочь', link: '/community/contribute' },
+        { text: 'Руководство по разработке', link: '/community/membership'},
+        { text: 'Как добавить свой пакет в хаб', link: '/community/send-ospx'},
+        { text: 'Авторы', link: '/community/developers' },
+      ]
     },
 
     socialLinks: [
