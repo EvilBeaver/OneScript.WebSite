@@ -16,13 +16,13 @@
     text-decoration: none;
 }
 
-a:link {
+a.telegram-button {
     color: #FFF;
     text-decoration: none;
 }
 
-.telegram-button:hover {
-    color: #FFF !important;
+a.telegram-button:hover {
+    color: #FFF;
     text-decoration: none;
 }
 
