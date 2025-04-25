@@ -17,7 +17,7 @@ interface DistDescription {
 const files = ref([] as DistDescription[]);
 
 onMounted(async () => {
-  files.value = (await axios.get('http://localhost:3030/api/archive/' + props.versionToken)).data;
+  files.value = (await axios.get('/api/archive/' + props.versionToken)).data;
 });
 
 </script>
