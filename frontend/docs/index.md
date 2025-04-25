@@ -6,7 +6,7 @@ hero:
   name: "OneScript"
   text: "Инструмент автоматизации для специалистов по 1С"
   image:
-    src: /images/logo-new-blurred.png
+    src: logo-new-blurred.png
     alt: OneScript
   actions:
     - theme: brand
