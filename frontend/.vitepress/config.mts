@@ -29,7 +29,7 @@ export default defineConfig({
   base: '/',
 
   srcDir: 'docs',
-  outDir: '../backend/files/wwwroot',
+  outDir: getOutDir(),
 
   cleanUrls: true,
 
@@ -189,3 +189,8 @@ function loadSyntaxSidebar(contentDir: string): DefaultTheme.SidebarItem[] {
   return JSON.parse(fileContent) as DefaultTheme.SidebarItem[];
 }
 
+function getOutDir(): string {
+  const envData = process.env.VITEPRESS_OUT;
+
+  return envData ? envData : '../backend/files/wwwroot'
+}
