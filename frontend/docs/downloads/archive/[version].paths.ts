@@ -1,4 +1,4 @@
-import fs from 'fs'
+import { getVersions } from '../../archive.data.ts'
 
 export default {
     paths() {
@@ -11,8 +11,7 @@ export default {
             'latest-dev'
         ];
         
-        return fs.readdirSync('../backend/files/markdown/versions')
-            .map((filename) => filename.replaceAll('.md', ''))
+        return getVersions()
             .filter((filename) => exclusions.indexOf(filename) === -1)
             .map((version) => {
                 return { params: { version }}
