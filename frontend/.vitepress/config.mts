@@ -192,5 +192,5 @@ function loadSyntaxSidebar(contentDir: string): DefaultTheme.SidebarItem[] {
 function getOutDir(): string {
   const envData = process.env.VITEPRESS_OUT;
 
-  return envData ? envData : '../backend/files/wwwroot'
+  return envData ? envData : '../backend/data/wwwroot'
 }

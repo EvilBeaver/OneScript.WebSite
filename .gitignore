@@ -1,6 +1,7 @@
 frontend/.vitepress/cache
 frontend/.vitepress/dist
 backend/files
+backend/data/wwwroot
 node_modules
 oscript_modules
 frontend/docs/syntax

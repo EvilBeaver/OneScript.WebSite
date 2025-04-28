@@ -7,7 +7,7 @@ import { IVersionInfo } from '../../shared/Archive';
     Способы сборки:
 
     1. При работающем бэкенде, через REST получить номера опубликованных версий. Задать переменную VITEPRESS_BACKEND_HOST
-    2. Developer mode - напрямую из каталога с MD-файлами бэка. Задать переменную VITEPRESS_FILES_DIR
+    2. Напрямую из каталога с MD-файлами бэка. Задать переменную VITEPRESS_FILES_DIR
 
 */
 
