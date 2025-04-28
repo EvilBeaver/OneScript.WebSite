@@ -17,7 +17,7 @@ pipeline {
 
             steps {
                 dir('frontend') {
-                    sh 'npm install && npm docs:build'
+                    sh 'npm install && npm run docs:build'
                 }
                 dir('backend') {
                     sh 'docker build -t oscript/backend .'
