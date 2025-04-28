@@ -1,0 +1,665 @@
+[
+  {
+    "text": "Глобальный контекст",
+    "items": [
+      {
+        "text": "Файловые операции",
+        "link": "/syntax/FileOperations"
+      },
+      {
+        "text": "Процедуры и функции взаимодействия с системой",
+        "link": "/syntax/SystemGlobalContext"
+      },
+      {
+        "text": "Работа с настройками системы",
+        "link": "/syntax/SystemConfigAccessor"
+      },
+      {
+        "text": "Операции со строками",
+        "link": "/syntax/StringOperations"
+      },
+      {
+        "text": "Работа с переменными окружения",
+        "link": "/syntax/EnvironmentVariablesImpl"
+      },
+      {
+        "text": "Процедуры и функции работы с двоичными данными",
+        "link": "/syntax/GlobalBinaryData"
+      },
+      {
+        "text": "Побитовые операции с целыми числами",
+        "link": "/syntax/GlobalBitFunctions"
+      },
+      {
+        "text": "Функции работы с XML",
+        "link": "/syntax/XmlGlobalFunctions"
+      },
+      {
+        "text": "Процедуры и функции работы с JSON",
+        "link": "/syntax/GlobalJsonFunctions"
+      },
+      {
+        "text": "Работа с макетами",
+        "link": "/syntax/TemplateStorage"
+      },
+      {
+        "text": "Процедуры и функции взаимодействия с часовыми поясами и временными зонами",
+        "link": "/syntax/GlobalTimezoneFunctions"
+      },
+      {
+        "text": "Работа с консолью",
+        "link": "/syntax/ConsoleProvider"
+      },
+      {
+        "text": "Прочие функции",
+        "link": "/syntax/MiscGlobalFunctions"
+      }
+    ]
+  },
+  {
+    "text": "Универсальные коллекции",
+    "items": [
+      {
+        "text": "Массив",
+        "link": "/syntax/Array"
+      },
+      {
+        "text": "Соответствие",
+        "link": "/syntax/Map"
+      },
+      {
+        "text": "Структура",
+        "link": "/syntax/Structure"
+      },
+      {
+        "text": "СписокЗначений",
+        "link": "/syntax/ValueList",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "ЭлементСпискаЗначений",
+            "link": "/syntax/ValueListItem"
+          }
+        ]
+      },
+      {
+        "text": "ТаблицаЗначений",
+        "link": "/syntax/ValueTable",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "КолонкаТаблицыЗначений",
+            "link": "/syntax/ValueTableColumn"
+          },
+          {
+            "text": "КоллекцияКолонокТаблицыЗначений",
+            "link": "/syntax/ValueTableColumnCollection"
+          },
+          {
+            "text": "СтрокаТаблицыЗначений",
+            "link": "/syntax/ValueTableRow"
+          },
+          {
+            "text": "ИндексыКоллекции",
+            "link": "/syntax/CollectionIndexes"
+          },
+          {
+            "text": "ИндексКоллекции",
+            "link": "/syntax/CollectionIndex"
+          }
+        ]
+      },
+      {
+        "text": "ДеревоЗначений",
+        "link": "/syntax/ValueTree",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "СтрокаДереваЗначений",
+            "link": "/syntax/ValueTreeRow"
+          },
+          {
+            "text": "КолонкаДереваЗначений",
+            "link": "/syntax/ValueTreeColumn"
+          },
+          {
+            "text": "КоллекцияКолонокДереваЗначений",
+            "link": "/syntax/ValueTreeColumnCollection"
+          },
+          {
+            "text": "КоллекцияСтрокДереваЗначений",
+            "link": "/syntax/ValueTreeRowCollection"
+          }
+        ]
+      },
+      {
+        "text": "КлючИЗначение",
+        "link": "/syntax/KeyAndValue"
+      },
+      {
+        "text": "ФиксированныйМассив",
+        "link": "/syntax/FixedArray"
+      },
+      {
+        "text": "ФиксированноеСоответствие",
+        "link": "/syntax/FixedMap"
+      },
+      {
+        "text": "ФиксированнаяСтруктура",
+        "link": "/syntax/FixedStructure"
+      }
+    ]
+  },
+  {
+    "text": "Работа с сетью",
+    "items": [
+      {
+        "text": "HTTPСоединение",
+        "link": "/syntax/HTTPConnection"
+      },
+      {
+        "text": "HTTPЗапрос",
+        "link": "/syntax/HTTPRequest"
+      },
+      {
+        "text": "HTTPОтвет",
+        "link": "/syntax/HTTPResponse"
+      },
+      {
+        "text": "ИнтернетПрокси",
+        "link": "/syntax/InternetProxy"
+      },
+      {
+        "text": "TCPСоединение",
+        "link": "/syntax/TCPConnection"
+      },
+      {
+        "text": "TCPСервер",
+        "link": "/syntax/TCPServer"
+      },
+      {
+        "text": "ОписаниеФайлаPostЗапроса",
+        "link": "/syntax/PostFileDecription"
+      },
+      {
+        "text": "ДанныеPOSTЗапроса",
+        "link": "/syntax/PostRequestData"
+      }
+    ]
+  },
+  {
+    "text": "Работа с ZIP",
+    "items": [
+      {
+        "text": "ЗаписьZipФайла",
+        "link": "/syntax/ZipFileWriter"
+      },
+      {
+        "text": "ЧтениеZipФайла",
+        "link": "/syntax/ZipFileReader"
+      },
+      {
+        "text": "ЭлементыZipФайла",
+        "link": "/syntax/ZipFileEntries"
+      },
+      {
+        "text": "ЭлементZipФайла",
+        "link": "/syntax/ZipFileEntry"
+      },
+      {
+        "text": "МетодСжатияZIP",
+        "link": "/syntax/ZIPCompressionMethod"
+      },
+      {
+        "text": "РежимСохраненияПутейZIP",
+        "link": "/syntax/ZIPStorePathsMode"
+      },
+      {
+        "text": "УровеньСжатияZIP",
+        "link": "/syntax/ZIPCompressionLevel"
+      },
+      {
+        "text": "МетодШифрованияZIP",
+        "link": "/syntax/ZIPEncryptionMethod"
+      }
+    ]
+  },
+  {
+    "text": "Работа с двоичными данными",
+    "items": [
+      {
+        "text": "БуферДвоичныхДанных",
+        "link": "/syntax/BinaryDataBuffer"
+      },
+      {
+        "text": "ФайловыйПоток",
+        "link": "/syntax/FileStream"
+      },
+      {
+        "text": "ПотокВПамяти",
+        "link": "/syntax/MemoryStream"
+      },
+      {
+        "text": "Поток",
+        "link": "/syntax/Stream"
+      },
+      {
+        "text": "МенеджерФайловыхПотоков",
+        "link": "/syntax/FileStreamsManager"
+      },
+      {
+        "text": "ДвоичныеДанные",
+        "link": "/syntax/BinaryData"
+      },
+      {
+        "text": "ЧтениеДанных",
+        "link": "/syntax/DataReader"
+      },
+      {
+        "text": "ЗаписьДанных",
+        "link": "/syntax/DataWriter"
+      },
+      {
+        "text": "РезультатЧтенияДанных",
+        "link": "/syntax/ReadDataResult"
+      }
+    ]
+  },
+  {
+    "text": "Регулярные выражения",
+    "items": [
+      {
+        "text": "РегулярноеВыражение",
+        "link": "/syntax/Regex"
+      },
+      {
+        "text": "ГруппаРегулярногоВыражения",
+        "link": "/syntax/RegExGroup"
+      },
+      {
+        "text": "КоллекцияГруппРегулярногоВыражения",
+        "link": "/syntax/RegExGroupCollection"
+      },
+      {
+        "text": "КоллекцияСовпаденийРегулярногоВыражения",
+        "link": "/syntax/RegExMatchCollection"
+      },
+      {
+        "text": "СовпадениеРегулярногоВыражения",
+        "link": "/syntax/RegExMatch"
+      }
+    ]
+  },
+  {
+    "text": "Работа с фоновыми заданиями",
+    "items": [
+      {
+        "text": "ФоновоеЗадание",
+        "link": "/syntax/BackgroundTask"
+      },
+      {
+        "text": "МенеджерФоновыхЗаданий",
+        "link": "/syntax/BackgroundTasksManager"
+      },
+      {
+        "text": "БлокировкаРесурса",
+        "link": "/syntax/ResourceLock"
+      }
+    ]
+  },
+  {
+    "text": "Работа с форматами сериализации",
+    "items": [
+      {
+        "text": "Работа с XML",
+        "link": "/syntax/xml",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "ЧтениеXML",
+            "link": "/syntax/XMLReader"
+          },
+          {
+            "text": "ЗаписьXML",
+            "link": "/syntax/XMLWriter"
+          },
+          {
+            "text": "КонтекстПространствИменXML",
+            "link": "/syntax/XMLNamespaceContext"
+          },
+          {
+            "text": "ПараметрыЗаписиXML",
+            "link": "/syntax/XMLWriterSettings"
+          },
+          {
+            "text": "ПараметрыЧтенияXML",
+            "link": "/syntax/XmlReaderSettings"
+          },
+          {
+            "text": "ТипУзлаXML",
+            "link": "/syntax/XMLNodeType"
+          },
+          {
+            "text": "ПробельныеСимволыXML",
+            "link": "/syntax/XMLSpace"
+          },
+          {
+            "text": "РасширенноеИмяXML",
+            "link": "/syntax/XMLExpandedName"
+          }
+        ]
+      },
+      {
+        "text": "Работа с JSON",
+        "link": "/syntax/json",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "ЧтениеJSON",
+            "link": "/syntax/JSONReader"
+          },
+          {
+            "text": "ЗаписьJSON",
+            "link": "/syntax/JSONWriter"
+          },
+          {
+            "text": "ФорматДатыJSON",
+            "link": "/syntax/JSONDateFormat"
+          },
+          {
+            "text": "ТипЗначенияJSON",
+            "link": "/syntax/JSONValueType"
+          },
+          {
+            "text": "ПараметрыЗаписиJSON",
+            "link": "/syntax/JSONWriterSettings"
+          },
+          {
+            "text": "ЭкранированиеСимволовJSON",
+            "link": "/syntax/JSONCharactersEscapeMode"
+          },
+          {
+            "text": "ПереносСтрокJSON",
+            "link": "/syntax/JSONLineBreak"
+          }
+        ]
+      },
+      {
+        "text": "Схемы XML и XDTO",
+        "link": "/syntax/xdto",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "СериализаторXDTO",
+            "link": "/syntax/XDTOSerializer"
+          },
+          {
+            "text": "НаборСхемXML",
+            "link": "/syntax/XMLSchemaSet"
+          },
+          {
+            "text": "ОбъединениеЗавершенностиСоставногоТипаXS",
+            "link": "/syntax/XSComplexFinalUnion"
+          },
+          {
+            "text": "ФиксированныйСписокКомпонентXS",
+            "link": "/syntax/XSComponentFixedList"
+          },
+          {
+            "text": "СписокКомпонентXS",
+            "link": "/syntax/XSComponentList"
+          },
+          {
+            "text": "ОбъединениеНедопустимыхПодстановкиXS",
+            "link": "/syntax/XSDisallowedSubstitutionsUnion"
+          },
+          {
+            "text": "КоллекцияИменованныхКомпонентXS",
+            "link": "/syntax/XSNamedComponentMap"
+          },
+          {
+            "text": "ОбъединениеЗапрещенныхПодстановокXS",
+            "link": "/syntax/XSProhibitedSubstitutionsUnion"
+          },
+          {
+            "text": "ОбъединениеЗавершенностиСхемыXS",
+            "link": "/syntax/XSSchemaFinalUnion"
+          },
+          {
+            "text": "ОбъединениеЗавершенностиПростогоТипаXS",
+            "link": "/syntax/XSSimpleFinalUnion"
+          },
+          {
+            "text": "ОбъединениеИсключенийГруппПодстановкиXS",
+            "link": "/syntax/XSSubstitutionGroupExclusionsUnion"
+          },
+          {
+            "text": "СхемаXML",
+            "link": "/syntax/XMLSchema"
+          },
+          {
+            "text": "АннотацияXS",
+            "link": "/syntax/XSAnnotation"
+          },
+          {
+            "text": "ИнформацияДляПриложенияXS",
+            "link": "/syntax/XSAppInfo"
+          },
+          {
+            "text": "ОбъявлениеАтрибутаXS",
+            "link": "/syntax/XSAttributeDeclaration"
+          },
+          {
+            "text": "ОпределениеГруппыАтрибутовXS",
+            "link": "/syntax/XSAttributeGroupDefinition"
+          },
+          {
+            "text": "ИспользованиеАтрибутаXS",
+            "link": "/syntax/XSAttributeUse"
+          },
+          {
+            "text": "ОпределениеСоставногоТипаXS",
+            "link": "/syntax/XSComplexTypeDefinition"
+          },
+          {
+            "text": "ДокументацияXS",
+            "link": "/syntax/XSDocumentation"
+          },
+          {
+            "text": "ОбъявлениеЭлементаXS",
+            "link": "/syntax/XSElementDeclaration"
+          },
+          {
+            "text": "ФасетПеречисленияXS",
+            "link": "/syntax/XSEnumerationFacet"
+          },
+          {
+            "text": "ФасетКоличестваРазрядовДробнойЧастиXS",
+            "link": "/syntax/XSFractionDigitsFacet"
+          },
+          {
+            "text": "ОпределениеОграниченияИдентичностиXS",
+            "link": "/syntax/XSIdentityConstraintDefinition"
+          },
+          {
+            "text": "ИмпортXS",
+            "link": "/syntax/XSImport"
+          },
+          {
+            "text": "ВключениеXS",
+            "link": "/syntax/XSInclude"
+          },
+          {
+            "text": "ФасетДлиныXS",
+            "link": "/syntax/XSLengthFacet"
+          },
+          {
+            "text": "ФасетМаксимальногоИсключающегоЗначенияXS",
+            "link": "/syntax/XSMaxExclusiveFacet"
+          },
+          {
+            "text": "ФасетМаксимальногоВключающегоЗначенияXS",
+            "link": "/syntax/XSMaxInclusiveFacet"
+          },
+          {
+            "text": "ФасетМаксимальнойДлиныXS",
+            "link": "/syntax/XSMaxLengthFacet"
+          },
+          {
+            "text": "ФасетМинимальногоИсключающегоЗначенияXS",
+            "link": "/syntax/XSMinExclusiveFacet"
+          },
+          {
+            "text": "ФасетМинимальногоВключающегоЗначенияXS",
+            "link": "/syntax/XSMinInclusiveFacet"
+          },
+          {
+            "text": "ФасетМинимальнойДлиныXS",
+            "link": "/syntax/XSMinLengthFacet"
+          },
+          {
+            "text": "ГруппаМоделиXS",
+            "link": "/syntax/XSModelGroup"
+          },
+          {
+            "text": "ОпределениеГруппыМоделиXS",
+            "link": "/syntax/XSModelGroupDefinition"
+          },
+          {
+            "text": "ОбъявлениеНотацииXS",
+            "link": "/syntax/XSNotationDeclaration"
+          },
+          {
+            "text": "ФрагментXS",
+            "link": "/syntax/XSParticle"
+          },
+          {
+            "text": "ФасетОбразцаXS",
+            "link": "/syntax/XSPatternFacet"
+          },
+          {
+            "text": "ПереопределениеXS",
+            "link": "/syntax/XSRedefine"
+          },
+          {
+            "text": "ОпределениеПростогоТипаXS",
+            "link": "/syntax/XSSimpleTypeDefinition"
+          },
+          {
+            "text": "ФасетОбщегоКоличестваРазрядовXS",
+            "link": "/syntax/XSTotalDigitsFacet"
+          },
+          {
+            "text": "ФасетПробельныхСимволовXS",
+            "link": "/syntax/XSWhitespaceFacet"
+          },
+          {
+            "text": "МаскаXS",
+            "link": "/syntax/XSWildcard"
+          },
+          {
+            "text": "ОпределенияXPathXS",
+            "link": "/syntax/XSXPathDefinition"
+          },
+          {
+            "text": "ОбработкаПробельныхСимволовXS",
+            "link": "/syntax/XSWhitespaceHandling"
+          },
+          {
+            "text": "ВариантXPathXS",
+            "link": "/syntax/XSXPathVariety"
+          },
+          {
+            "text": "ВариантПростогоТипаXS",
+            "link": "/syntax/XSSimpleTypeVariety"
+          },
+          {
+            "text": "ОбработкаСодержимогоXS",
+            "link": "/syntax/XSProcessContents"
+          },
+          {
+            "text": "КатегорияОграниченияПространствИменXS",
+            "link": "/syntax/XSNamespaceConstraintCategory"
+          },
+          {
+            "text": "КатегорияОграниченияИдентичностиXS",
+            "link": "/syntax/XSIdentityConstraintCategory"
+          },
+          {
+            "text": "МетодНаследованияXS",
+            "link": "/syntax/XSDerivationMethod"
+          },
+          {
+            "text": "МодельСодержимогоXS",
+            "link": "/syntax/XSContentModel"
+          },
+          {
+            "text": "ОграничениеЗначенияXS",
+            "link": "/syntax/XSConstraint"
+          },
+          {
+            "text": "ВидГруппыМоделиXS",
+            "link": "/syntax/XSCompositor"
+          },
+          {
+            "text": "ТипКомпонентыXS",
+            "link": "/syntax/XSComponentType"
+          },
+          {
+            "text": "КатегорияИспользованияАтрибутаXS",
+            "link": "/syntax/XSAttributeUseCategory"
+          },
+          {
+            "text": "НазначениеТипаXML",
+            "link": "/syntax/XMLTypeAssignment"
+          },
+          {
+            "text": "ФормаXML",
+            "link": "/syntax/XMLForm"
+          },
+          {
+            "text": "ЗавершенностьПростогоТипаXS",
+            "link": "/syntax/XSSimpleFinal"
+          },
+          {
+            "text": "ЗавершенностьСоставногоТипаXS",
+            "link": "/syntax/XSComplexFinal"
+          },
+          {
+            "text": "ЗавершенностьСхемыXS",
+            "link": "/syntax/XSSchemaFinal"
+          },
+          {
+            "text": "ТипПроверкиXML",
+            "link": "/syntax/XMLValidationType"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Веб-сервер Kestrel",
+    "items": [
+      {
+        "text": "ВебСервер",
+        "link": "/syntax/WebServer"
+      },
+      {
+        "text": "HTTPКонтекст",
+        "link": "/syntax/HTTPContext"
+      },
+      {
+        "text": "HTTPСервисЗапрос",
+        "link": "/syntax/HTTPServiceRequest"
+      },
+      {
+        "text": "HTTPСервисОтвет",
+        "link": "/syntax/HTTPServiceResponse"
+      }
+    ]
+  },
+  {
+    "text": "Прочее",
+    "link": "/syntax/others"
+  }
+]
