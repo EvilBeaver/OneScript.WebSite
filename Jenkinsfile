@@ -1,17 +1,18 @@
 pipeline {
 
-    agent { label: 'linux' }
+    agent none
 
     stages {
         stage('Build content') {
-            environment {
-                VITEPRESS_FILES_DIR='/var/www/oscript.io'
-            }
             agent {
                 docker {
                     image 'node:lts-alpine3.20'
-                    reuseNode: true
+                    label 'linux'
                 }
+            }
+
+            environment {
+                VITEPRESS_FILES_DIR='/var/www/oscript.io'
             }
 
             steps {
