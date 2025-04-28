@@ -19,6 +19,13 @@ pipeline {
                 dir('frontend') {
                     sh 'npm install && npm run docs:build'
                 }
+            }
+        }
+        stage('Create container') {
+            agent {
+                label 'linux'
+            }
+            steps {
                 dir('backend') {
                     sh 'docker build -t oscript/backend .'
                 }
