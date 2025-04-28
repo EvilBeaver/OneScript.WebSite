@@ -1,8 +1,8 @@
 FROM evilbeaver/onescript:dev
 
 COPY packagedef /app/packagedef
-COPY src /app/src
-COPY data /app/data
+COPY src/ /app/src/
+COPY data/ /app/data/
 WORKDIR /app
 
 RUN opm install -l

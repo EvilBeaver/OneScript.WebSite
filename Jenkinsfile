@@ -27,7 +27,7 @@ pipeline {
             }
             steps {
                 dir('backend') {
-                    sh 'docker build -t oscript/backend .'
+                    sh 'docker buildx build --load -t oscript/backend .'
                 }
             }
         }
