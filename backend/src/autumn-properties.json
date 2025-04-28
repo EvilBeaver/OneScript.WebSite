@@ -1,6 +1,7 @@
 {
     "filesDir": "files",
     "server": {
+        "rootDir": "data",
         "port": 3030
     },
     "winow": {
