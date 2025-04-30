@@ -12,7 +12,7 @@
             class="avatar"
           />
           <h3><a :href="contributor.html_url">{{ contributor.login }}</a></h3>
-          <p>Contributions: {{ contributor.contributions }}</p>
+          <p>Участий: {{ contributor.contributions }}</p>
         </div>
       </div>
   
@@ -21,14 +21,14 @@
           @click="fetchContributors(currentPage - 1)"
           :disabled="currentPage === 1"
         >
-          Previous
+          Назад
         </button>
-        <span>Page {{ currentPage }}</span>
+        <span>Страница {{ currentPage }}</span>
         <button
           @click="fetchContributors(currentPage + 1)"
           :disabled="!hasNextPage"
         >
-          Next
+          Далее
         </button>
       </div>
     </div>
