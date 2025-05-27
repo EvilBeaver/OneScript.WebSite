@@ -15,10 +15,6 @@ outline: [2, 3]
 ### Количество / Count
 
 
-#### Параметры
-
-* **process**: 
-
 ### GetValue / GetValue
 
 
