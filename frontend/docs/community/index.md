@@ -16,7 +16,7 @@
 * [oscript.io](https://oscript.io) - Основной сайт (вы на нем находитесь)
 * [hub.oscript.io](https://hub.oscript.io) - Сервер хранения собранных пакетов, предоставляемых сообществом
 * Организация [oscript-library](https://github.com/oscript-library) на github. Здесь сообраны исходники всех пакетов, предоставляемых сообществом
-* [build.oscript.io] Публичный сервер сборок, на котором собираются релизы движка
+* [build.oscript.io](https://build.oscript.io) Публичный сервер сборок, на котором собираются релизы движка
 * [Исходники движка](https://github.com/EvilBeaver/OneScript)
 * [Исходники движка (зеркало)](https://gitflic.ru/project/evilbeaver/onescript)
 * [Инфраструктура](https://github.com/EvilBeaver/oscript-infrastructure) - девопс кухня ресурса сервера oscript.io, шестеренки, благодаря которым он работает и вы читаете этот текст.

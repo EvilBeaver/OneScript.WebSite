@@ -54,7 +54,7 @@ namespace ScriptEngine.Machine.Library
 }
 ```
 
-В примере приведен фрагмент класса `TextReadImpl`, который в языке виден, как **ЧтениеТекста**. Класс унаследован от `AutoContext&lt;TextReadImpl&gt;` и помечен атрибутом `ContextClassAttribute`.
+В примере приведен фрагмент класса `TextReadImpl`, который в языке виден, как **ЧтениеТекста**. Класс унаследован от `AutoContext<TextReadImpl>` и помечен атрибутом `ContextClassAttribute`.
 
 В принципе, этих простых действий достаточно, чтобы ваш класс появился в языке.
 

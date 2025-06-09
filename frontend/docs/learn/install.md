@@ -77,15 +77,3 @@ oscript test.os
 ```
 
 В консоль должно вывестись `Привет, 1Скрипт!`
-
-## Предыдущие версии
-
-Предыдущая версия 1Скрипт - 1.x поддерживается в части исправления ошибок. Версии также можно скачать со [страницы загрузок](/downloads/). Для работы версии 1.x требуется .NET 4.8 или Mono 6+
-
-<script setup>
-import Releases from '../components/Releases.vue'
-</script>
-
-<Suspense>
-    <Releases />
-</Suspense>
