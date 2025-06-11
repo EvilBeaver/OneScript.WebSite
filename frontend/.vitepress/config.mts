@@ -11,7 +11,7 @@ export default defineConfig({
   description: "OneScript. Официальная документация, релизы, справка, синтакс-помощник",
 
   // TODO cделать яндекс-метрику и иконку favicon
-  // head: [
+  head: [
   //   [
   //     'script',
   //     { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-ZHG1MYKGV9' }
@@ -21,8 +21,8 @@ export default defineConfig({
   //     {},
   //     "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-ZHG1MYKGV9');"
   //   ],
-  //   ['link', { rel: 'icon', href: '/docs/favicon.ico' }]
-  // ],
+    ['link', { rel: 'icon', href: '/docs/favicon.ico' }]
+  ],
 
   lang: 'ru-RU',
 
@@ -62,6 +62,8 @@ export default defineConfig({
   },
 
   themeConfig: {
+    logo: '/logo-gradient.png',
+
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Изучить', link: '/learn/' },
