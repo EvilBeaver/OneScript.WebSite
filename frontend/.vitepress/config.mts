@@ -10,17 +10,7 @@ export default defineConfig({
   title: "OneScript",
   description: "OneScript. Официальная документация, релизы, справка, синтакс-помощник",
 
-  // TODO cделать яндекс-метрику и иконку favicon
   head: [
-  //   [
-  //     'script',
-  //     { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-ZHG1MYKGV9' }
-  //   ],
-  //   [
-  //     'script',
-  //     {},
-  //     "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-ZHG1MYKGV9');"
-  //   ],
     ['link', { rel: 'icon', href: '/docs/favicon.ico' }]
   ],
 
@@ -71,6 +61,11 @@ export default defineConfig({
       { text: 'Синтакс-помощник', link: '/syntax/' },
       { text: 'Сообщество', link: '/community/' },
     ],
+
+    editLink: {
+      pattern: 'https://github.com/EvilBeaver/OneScript.WebSite/tree/main/frontend/docs/:path',
+      text: 'Редактировать эту страницу'
+    },
 
     sidebar: {
       '/learn/': [
