@@ -29,8 +29,6 @@ pipeline {
                 dir('backend') {
                     sh 'docker buildx build --load -t oscript/backend .'
                 }
-
-                sh 'docker-compose stop site && docker-compose rm -f site && docker-compose up -d site'
             }
         }
     }
