@@ -45,7 +45,6 @@ async function getVersions(): Promise<IVersionInfo[]> {
 }
 
 async function getVersionsFromBackend(host: string): Promise<IVersionInfo[]> {
-    var host = process.env.VITEPRESS_BACKEND_HOST
     var response = await axios.get(host + '/api/archive');
     if (response.status != 200)
         throw new Error(response.data);

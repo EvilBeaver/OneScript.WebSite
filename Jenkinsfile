@@ -12,6 +12,7 @@ pipeline {
             }
 
             environment {
+                VITEPRESS_BACKEND_HOST="http://site/"
                 VITEPRESS_FILES_DIR='/var/www/oscript.io'
             }
 
