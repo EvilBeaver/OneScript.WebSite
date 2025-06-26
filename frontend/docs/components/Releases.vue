@@ -35,7 +35,7 @@ onMounted(async () => {
           </thead>
           <tbody>
             <tr v-for="distr of files">
-              <td><a :href="distr.link">{{ distr.filename }}</a></td>
+              <td><a :href="distr.link" target="_blank" rel="noopener" >{{ distr.filename }}</a></td>
               <td>{{ distr.distType }}</td>
               <td>{{ distr.arch }}</td>
               <td>{{ distr.modified }}</td>
