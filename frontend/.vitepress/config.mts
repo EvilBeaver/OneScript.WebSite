@@ -11,7 +11,7 @@ export default defineConfig({
   description: "OneScript. Официальная документация, релизы, справка, синтакс-помощник",
 
   head: [
-    ['link', { rel: 'icon', href: '/docs/favicon.ico' }]
+    ['link', { rel: 'icon', href: '/favicon.ico' }]
   ],
 
   lang: 'ru-RU',
