@@ -90,8 +90,8 @@
   }
   
   .contributor-card {
-    background: #fff;
-    border: 1px solid #ddd;
+    background: var(--vp-c-bg-soft);
+    border: 1px solid var(--vp-c-border);
     border-radius: 12px;
     padding: 16px;
     width: 250px;
@@ -118,16 +118,14 @@
   button {
     padding: 8px 16px;
     font-size: 14px;
-    background-color: #eee;
-    border: 1px solid #ccc;
+    background-color: var(--vp-c-bg-soft);
+    border: 1px solid var(--vp-c-border);
     border-radius: 6px;
     cursor: pointer;
   }
   
   button:disabled {
-    background-color: #f5f5f5;
-    color: #999;
-    cursor: not-allowed;
+    visibility: hidden
   }
   </style>
   
