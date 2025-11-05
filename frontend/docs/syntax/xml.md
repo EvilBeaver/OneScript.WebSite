@@ -9,3 +9,4 @@
 * [ТипУзлаXML](/syntax/XMLNodeType)
 * [ПробельныеСимволыXML](/syntax/XMLSpace)
 * [РасширенноеИмяXML](/syntax/XMLExpandedName)
+* [ПреобразованиеXSL](/syntax/XSLTransform)

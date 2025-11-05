@@ -19,6 +19,10 @@
         "link": "/syntax/StringOperations"
       },
       {
+        "text": "Динамическое подключение сценариев",
+        "link": "/syntax/DynamicLoadingFunctions"
+      },
+      {
         "text": "Работа с переменными окружения",
         "link": "/syntax/EnvironmentVariablesImpl"
       },
@@ -221,6 +225,18 @@
       {
         "text": "МетодШифрованияZIP",
         "link": "/syntax/ZIPEncryptionMethod"
+      },
+      {
+        "text": "РежимВосстановленияПутейФайловZIP",
+        "link": "/syntax/ZIPRestoreFilePathsMode"
+      },
+      {
+        "text": "РежимОбработкиПодкаталоговZIP",
+        "link": "/syntax/ZIPSubDirProcessingMode"
+      },
+      {
+        "text": "КодировкаИменФайловВZipФайле",
+        "link": "/syntax/FileNamesEncodingInZipFile"
       }
     ]
   },
@@ -346,6 +362,10 @@
           {
             "text": "РасширенноеИмяXML",
             "link": "/syntax/XMLExpandedName"
+          },
+          {
+            "text": "ПреобразованиеXSL",
+            "link": "/syntax/XSLTransform"
           }
         ]
       },
@@ -418,8 +438,20 @@
             "link": "/syntax/XSNamedComponentMap"
           },
           {
+            "text": "ЗапрещенныеПодстановкиXS",
+            "link": "/syntax/XSProhibitedSubstitutions"
+          },
+          {
+            "text": "НедопустимыеПодстановкиXS",
+            "link": "/syntax/XSDisallowedSubstitutions"
+          },
+          {
             "text": "ОбъединениеЗапрещенныхПодстановокXS",
             "link": "/syntax/XSProhibitedSubstitutionsUnion"
+          },
+          {
+            "text": "ИсключенияГруппПодстановкиXS",
+            "link": "/syntax/XSSubstitutionGroupExclusions"
           },
           {
             "text": "ОбъединениеЗавершенностиСхемыXS",
@@ -440,6 +472,10 @@
           {
             "text": "АннотацияXS",
             "link": "/syntax/XSAnnotation"
+          },
+          {
+            "text": "ФормаПредставленияXS",
+            "link": "/syntax/XSForm"
           },
           {
             "text": "ИнформацияДляПриложенияXS",
