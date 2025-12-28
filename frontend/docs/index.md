@@ -129,13 +129,13 @@ OneScript поддерживает создание собственных кл�
 .features-section {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 3rem 2rem 0;
+  padding: 3rem 2rem 2rem;
 }
 
 .features-section h2 {
   text-align: center;
   font-size: 2.5rem;
-  margin: 0 0 2.5rem 0 !important;
+  margin: 0 0 3.5rem 0 !important;
   padding: 0 !important;
 }
 
@@ -166,11 +166,13 @@ OneScript поддерживает создание собственных кл�
   background: linear-gradient(90deg, #5194D8 0%, #345DB9 100%);
   transform: scaleX(0);
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: none;
 }
 
 .feature-card:hover {
   transform: translateY(-8px);
   border-color: var(--vp-c-brand-1);
+  box-shadow: 0 12px 40px rgba(81, 148, 216, 0.15);
 }
 
 .feature-card:hover::before {
@@ -186,10 +188,9 @@ OneScript поддерживает создание собственных кл�
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
-  background: linear-gradient(135deg, #5194D8 0%, #345DB9 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--vp-c-text-1);
+  -webkit-text-fill-color: var(--vp-c-text-1);
+  background: none;
 }
 
 .feature-card p {
