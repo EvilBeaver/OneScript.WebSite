@@ -292,59 +292,63 @@
 }
 
 /* Transparent navbar on home hero - initial state via CSS */
-/* On home page, navbar starts transparent immediately */
-html.is-home-page .VPNavBar:not(.scrolled),
-body.is-home-page .VPNavBar:not(.scrolled) {
-  background-color: transparent !important;
-  backdrop-filter: none !important;
-  box-shadow: none !important;
+/* On home page, navbar uses CSS variable for gradual opacity */
+html.is-home-page .VPNavBar:not(.scrolled) {
+  --navbar-opacity: 0;
+  background-color: rgba(255, 255, 255, calc(0.95 * var(--navbar-opacity, 0))) !important;
+  backdrop-filter: blur(calc(10px * var(--navbar-opacity, 0))) !important;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, calc(0.08 * var(--navbar-opacity, 0))) !important;
 }
 
-/* Transparent navbar on home hero - controlled by JS class (legacy support) */
+html.is-home-page.dark .VPNavBar:not(.scrolled) {
+  background-color: rgba(26, 26, 26, calc(0.95 * var(--navbar-opacity, 0))) !important;
+}
+
+/* Text color transitions based on opacity */
+html.is-home-page .VPNavBar:not(.scrolled) .VPNavBarTitle .title {
+  color: color-mix(in srgb, white calc((1 - var(--navbar-opacity, 0)) * 100%), var(--vp-c-text-1)) !important;
+  -webkit-text-fill-color: color-mix(in srgb, white calc((1 - var(--navbar-opacity, 0)) * 100%), var(--vp-c-text-1)) !important;
+  background: none !important;
+}
+
+html.is-home-page .VPNavBar:not(.scrolled) .VPNavBarMenuLink {
+  color: color-mix(in srgb, white calc((1 - var(--navbar-opacity, 0)) * 100%), var(--vp-c-text-1)) !important;
+}
+
+html.is-home-page .VPNavBar:not(.scrolled) .VPSocialLink {
+  color: color-mix(in srgb, white calc((1 - var(--navbar-opacity, 0)) * 100%), var(--vp-c-text-1)) !important;
+}
+
+/* Hide search on home page when transparent */
+html.is-home-page .VPNavBar:not(.scrolled) .VPNavBarSearch {
+  opacity: var(--navbar-opacity, 0);
+  pointer-events: none;
+}
+
+html.is-home-page .VPNavBar.scrolled .VPNavBarSearch {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Legacy support */
 .VPNavBar.transparent {
   background-color: transparent !important;
   backdrop-filter: none !important;
   box-shadow: none !important;
 }
 
-html.is-home-page .VPNavBar:not(.scrolled) .VPNavBarTitle .title,
-body.is-home-page .VPNavBar:not(.scrolled) .VPNavBarTitle .title,
 .VPNavBar.transparent .VPNavBarTitle .title {
   color: white !important;
   -webkit-text-fill-color: white !important;
   background: none !important;
 }
 
-html.is-home-page .VPNavBar:not(.scrolled) .VPNavBarMenuLink,
-body.is-home-page .VPNavBar:not(.scrolled) .VPNavBarMenuLink,
 .VPNavBar.transparent .VPNavBarMenuLink {
   color: white !important;
 }
 
-html.is-home-page .VPNavBar:not(.scrolled) .VPNavBarMenuLink:hover,
-body.is-home-page .VPNavBar:not(.scrolled) .VPNavBarMenuLink:hover,
-.VPNavBar.transparent .VPNavBarMenuLink:hover {
-  color: rgba(255, 255, 255, 0.8) !important;
-}
-
-html.is-home-page .VPNavBar:not(.scrolled) .VPSocialLink,
-body.is-home-page .VPNavBar:not(.scrolled) .VPSocialLink,
 .VPNavBar.transparent .VPSocialLink {
   color: white !important;
-}
-
-html.is-home-page .VPNavBar:not(.scrolled) .VPNavBarSearch button,
-body.is-home-page .VPNavBar:not(.scrolled) .VPNavBarSearch button,
-.VPNavBar.transparent .VPNavBarSearch button {
-  color: white !important;
-  border-color: rgba(255, 255, 255, 0.3) !important;
-}
-
-/* Hide search on home page */
-html.is-home-page .VPNavBar:not(.scrolled) .VPNavBarSearch,
-body.is-home-page .VPNavBar:not(.scrolled) .VPNavBarSearch,
-.VPNavBar.transparent .VPNavBarSearch {
-  display: none !important;
 }
 
 /* Title styling - normal state (not gradient) */

@@ -27,7 +27,7 @@ const updateHomeClass = () => {
   }
 };
 
-// Handle navbar scroll state on home page
+// Handle navbar scroll state on home page with gradual opacity
 const handleScroll = () => {
   const navbar = document.querySelector('.VPNavBar');
   if (!navbar) return;
@@ -35,15 +35,23 @@ const handleScroll = () => {
   const isHome = frontmatter.value.layout === 'home';
   if (!isHome) {
     navbar.classList.remove('scrolled');
+    navbar.style.removeProperty('--navbar-opacity');
     return;
   }
   
   const scrollY = window.scrollY;
-  const heroHeight = window.innerHeight;
+  const fadeStart = window.innerHeight * 0.25;
+  const fadeEnd = window.innerHeight * 0.85;
   
-  if (scrollY >= heroHeight - 100) {
+  if (scrollY <= fadeStart) {
+    navbar.style.setProperty('--navbar-opacity', '0');
+    navbar.classList.remove('scrolled');
+  } else if (scrollY >= fadeEnd) {
+    navbar.style.setProperty('--navbar-opacity', '1');
     navbar.classList.add('scrolled');
   } else {
+    const progress = (scrollY - fadeStart) / (fadeEnd - fadeStart);
+    navbar.style.setProperty('--navbar-opacity', progress.toString());
     navbar.classList.remove('scrolled');
   }
 };
