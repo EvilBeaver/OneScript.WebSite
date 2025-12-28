@@ -50,7 +50,7 @@
   transform: translateX(-50%);
   width: 100vw;
   height: 100%;
-  background-image: url('/2.png');
+  background-image: url('/2-min.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
