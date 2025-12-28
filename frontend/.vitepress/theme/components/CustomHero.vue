@@ -1,12 +1,12 @@
 <template>
   <div class="hero-wrapper">
     <div class="custom-hero">
-      <div class="hero-background" :class="{ loaded: bgLoaded }">
-        <div class="hero-overlay"></div>
-      </div>
+      <div class="hero-background-blur" :class="{ hidden: bgLoaded }"></div>
+      <div class="hero-background-main" :class="{ visible: bgLoaded }"></div>
+      <div class="hero-overlay"></div>
       <div class="hero-content">
         <div class="hero-logo">
-          <img src="/logo-white.png" alt="OneScript Logo" />
+          <img src="/logo-white-small.png" alt="OneScript Logo" />
         </div>
         <div class="hero-text">
           <h1 class="hero-title">OneScript</h1>
@@ -19,6 +19,11 @@
           </div>
         </div>
       </div>
+      <button class="scroll-down-btn" @click="scrollToContent" aria-label="Прокрутить вниз">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
     </div>
   </div>
 </template>
@@ -33,8 +38,33 @@ onMounted(() => {
   img.onload = () => {
     bgLoaded.value = true;
   };
-  img.src = '/2.png';
+  img.src = '/2-min.png';
 });
+
+const scrollToContent = () => {
+  const targetY = window.innerHeight - 50;
+  const startY = window.scrollY;
+  const distance = targetY - startY;
+  const duration = 800;
+  let startTime = null;
+
+  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+  const animate = (currentTime) => {
+    if (!startTime) startTime = currentTime;
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = easeOutCubic(progress);
+    
+    window.scrollTo(0, startY + distance * eased);
+    
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    }
+  };
+
+  requestAnimationFrame(animate);
+};
 </script>
 
 <style>
@@ -54,7 +84,7 @@ onMounted(() => {
   overflow: hidden;
 }
 
-.hero-background {
+.hero-background-blur {
   position: absolute;
   top: 0;
   left: 50%;
@@ -66,32 +96,48 @@ onMounted(() => {
   background-position: center;
   background-repeat: no-repeat;
   z-index: 0;
-  transition: filter 0.3s ease;
-  filter: blur(10px);
+  opacity: 1;
+  transition: opacity 0.4s ease;
 }
 
-.hero-background.loaded {
-  background-image: url('/2.png');
-  filter: blur(0);
+.hero-background-blur.hidden {
+  opacity: 0;
+}
+
+.hero-background-main {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
+  background-image: url('/2-min.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.hero-background-main.visible {
+  opacity: 1;
 }
 
 .hero-overlay {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
   height: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.85) 0%,
-    rgba(0, 0, 0, 0.6) 50%,
-    rgba(0, 0, 0, 0.3) 100%
-  );
+  background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.3) 100%);
+  z-index: 1;
 }
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 1280px;
   margin: 3rem auto 0 18%;
   padding: 0 2rem;
@@ -180,24 +226,19 @@ onMounted(() => {
     margin: 0 auto;
     padding: 0 1.5rem;
   }
-  
   .hero-logo img {
     width: 120px;
   }
-  
   .hero-title {
     font-size: 3.5rem;
   }
-  
   .hero-description {
     font-size: 1rem;
   }
-  
   .hero-button {
     padding: 0.65rem 1.5rem;
     font-size: 0.9rem;
   }
-  
   .hero-actions {
     justify-content: center;
   }
@@ -207,18 +248,58 @@ onMounted(() => {
   .hero-title {
     font-size: 2.5rem;
   }
-  
   .hero-description {
     font-size: 0.95rem;
   }
-  
   .hero-actions {
     flex-direction: column;
   }
-  
   .hero-button {
     width: 100%;
     text-align: center;
+  }
+}
+
+/* Scroll down button - desktop only */
+.scroll-down-btn {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  animation: bounce-arrow 2s infinite;
+}
+
+.scroll-down-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateX(-50%) scale(1.1);
+}
+
+@keyframes bounce-arrow {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(8px);
+  }
+}
+
+@media (max-width: 768px) {
+  .scroll-down-btn {
+    display: none;
   }
 }
 </style>

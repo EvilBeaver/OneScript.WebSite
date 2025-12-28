@@ -13,8 +13,8 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     // Preload critical resources for faster initial load
-    ['link', { rel: 'preload', href: '/2.png', as: 'image' }],
-    ['link', { rel: 'preload', href: '/logo-white.png', as: 'image' }],
+    ['link', { rel: 'preload', href: '/2-min.png', as: 'image' }],
+    ['link', { rel: 'preload', href: '/logo-white-small.png', as: 'image' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     // Inline script to set home page class immediately to prevent navbar flash
     ['script', {}, `
