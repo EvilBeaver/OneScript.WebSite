@@ -3,6 +3,26 @@
  * Modern and stylish customization for VitePress
  */
 
+/* Global keyframes for hero bounce animation */
+@keyframes hero-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* Global keyframes for logo carousel */
+@keyframes scroll-logos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 :root {
   /* Custom brand colors - OneScript blue theme */
   --os-primary: #4a90d9;
@@ -212,18 +232,6 @@
   border-top: none;
   margin-top: 3rem;
   padding-top: 2rem;
-  position: relative;
-}
-
-.vp-doc h2::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(90deg, #5194D8 0%, #345DB9 100%);
-  border-radius: 2px;
 }
 
 .vp-doc a {
@@ -329,13 +337,18 @@
   background-clip: text !important;
 }
 
-/* Search box styling - wider */
+/* Search box styling - stretch to available width */
 .VPNavBarSearch {
-  padding-left: 16px !important;
+  flex: 1 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  padding-left: 24px !important;
+  padding-right: 16px !important;
 }
 
 .VPNavBarSearch .DocSearch-Button {
-  min-width: 200px !important;
+  width: 300px !important;
+  justify-content: space-between !important;
 }
 
 .VPNavBarTitle a {

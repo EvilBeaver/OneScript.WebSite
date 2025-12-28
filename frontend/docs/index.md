@@ -4,6 +4,8 @@ layout: home
 
 <CustomHero />
 
+<LogoCarousel />
+
 <div class="features-section">
 
 ## Возможности

@@ -164,6 +164,11 @@ export default defineConfig({
     darkModeSwitchTitle: 'Переключить на тёмную тему',
     sidebarMenuLabel: 'Меню',
     returnToTopLabel: 'Вернуться к началу',
+    
+    footer: {
+      message: 'All trademarks, logos, and brand names are the property of their respective owners. Use of these names, trademarks, and brands does not imply endorsement.',
+      copyright: `© ${new Date().getFullYear()} OneScript. All rights reserved.`
+    },
   },
   
   async transformPageData(pageData, _) {

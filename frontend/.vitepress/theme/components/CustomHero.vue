@@ -5,6 +5,9 @@
         <div class="hero-overlay"></div>
       </div>
       <div class="hero-content">
+        <div class="hero-logo">
+          <img src="/logo-white.png" alt="OneScript Logo" />
+        </div>
         <div class="hero-text">
           <h1 class="hero-title">OneScript</h1>
           <p class="hero-description">
@@ -16,8 +19,8 @@
           </div>
         </div>
       </div>
-      <div class="scroll-indicator" @click="scrollToContent">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="scroll-indicator-wrapper" @click="scrollToContent">
+        <svg class="scroll-arrow" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
       </div>
@@ -26,7 +29,9 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
+
+const scrollArrow = ref(null);
 
 const scrollToContent = () => {
   const content = document.querySelector('.features-section');
@@ -36,8 +41,24 @@ const scrollToContent = () => {
 };
 
 onMounted(() => {
-  // Ensure scroll works after component is mounted
-  console.log('CustomHero mounted');
+  // Inject keyframes if not exists
+  if (!document.querySelector('#hero-bounce-keyframes')) {
+    const style = document.createElement('style');
+    style.id = 'hero-bounce-keyframes';
+    style.textContent = `
+      @keyframes hero-bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-12px); }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+  
+  // Add animation class after mount
+  const arrow = document.querySelector('.scroll-arrow');
+  if (arrow) {
+    arrow.style.animation = 'hero-bounce 1.5s ease-in-out infinite';
+  }
 });
 </script>
 
@@ -90,13 +111,25 @@ onMounted(() => {
   position: relative;
   z-index: 1;
   max-width: 1280px;
-  margin: 0 auto;
+  margin: 3rem auto 0 18%;
   padding: 0 2rem;
   width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hero-logo {
+  flex-shrink: 0;
+}
+
+.hero-logo img {
+  width: 200px;
+  height: auto;
 }
 
 .hero-text {
-  max-width: 750px;
+  max-width: 550px;
 }
 
 .hero-title {
@@ -156,33 +189,38 @@ onMounted(() => {
   transform: translateY(-2px);
 }
 
-.scroll-indicator {
+.scroll-indicator-wrapper {
   position: absolute;
   bottom: 2rem;
   left: 50%;
+  transform: translateX(-50%);
   z-index: 2;
   cursor: pointer;
+  padding: 0.5rem;
+}
+
+.scroll-arrow {
   color: white;
   opacity: 0.8;
   transition: opacity 0.3s ease;
-  padding: 0.5rem;
-  animation: hero-bounce 2s ease-in-out infinite;
+  animation: hero-bounce 1.5s ease-in-out infinite;
 }
 
-.scroll-indicator:hover {
+.scroll-indicator-wrapper:hover .scroll-arrow {
   opacity: 1;
 }
 
-@keyframes hero-bounce {
-  0%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  50% {
-    transform: translateX(-50%) translateY(-15px);
-  }
-}
-
 @media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .hero-logo img {
+    width: 120px;
+  }
+  
   .hero-title {
     font-size: 3.5rem;
   }
@@ -194,6 +232,10 @@ onMounted(() => {
   .hero-button {
     padding: 0.65rem 1.5rem;
     font-size: 0.9rem;
+  }
+  
+  .hero-actions {
+    justify-content: center;
   }
 }
 
