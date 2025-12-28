@@ -19,47 +19,11 @@
           </div>
         </div>
       </div>
-      <div class="scroll-indicator-wrapper" @click="scrollToContent">
-        <svg class="scroll-arrow" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
-
-const scrollArrow = ref(null);
-
-const scrollToContent = () => {
-  const content = document.querySelector('.features-section');
-  if (content) {
-    content.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-};
-
-onMounted(() => {
-  // Inject keyframes if not exists
-  if (!document.querySelector('#hero-bounce-keyframes')) {
-    const style = document.createElement('style');
-    style.id = 'hero-bounce-keyframes';
-    style.textContent = `
-      @keyframes hero-bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-12px); }
-      }
-    `;
-    document.head.appendChild(style);
-  }
-  
-  // Add animation class after mount
-  const arrow = document.querySelector('.scroll-arrow');
-  if (arrow) {
-    arrow.style.animation = 'hero-bounce 1.5s ease-in-out infinite';
-  }
-});
 </script>
 
 <style>
@@ -187,27 +151,6 @@ onMounted(() => {
   background: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-2px);
-}
-
-.scroll-indicator-wrapper {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  cursor: pointer;
-  padding: 0.5rem;
-}
-
-.scroll-arrow {
-  color: white;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
-  animation: hero-bounce 1.5s ease-in-out infinite;
-}
-
-.scroll-indicator-wrapper:hover .scroll-arrow {
-  opacity: 1;
 }
 
 @media (max-width: 768px) {
