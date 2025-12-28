@@ -1,47 +1,55 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
 layout: home
-
-hero:
-  name: "OneScript"
-  text: "Инструмент автоматизации для специалистов по 1С"
-  image:
-    src: logo-new-blurred.png
-    alt: OneScript
-  actions:
-    - theme: brand
-      text: Изучить
-      link: /learn/
-    - theme: alt
-      text: Скачать
-      link: /downloads/
-
-features:
-  - title: Автоматизируй выпуск релизов
-    details: С готовыми библиотеками для Jenkins, Gitlab CI, Docker
-  
-  - title: Обновляй типовые автоматически
-    details: С помощью библиотек yard и vanessa-runner
-  
-  - title: Построй веб-сервис на 1С
-    details: Встроенный веб-сервер на базе Kestrel и компонентный фреймворк WINOW
-  
-  - title: Запускай тесты
-    details: Различные фреймворки и методики тестирования TDD, BDD
-  
-  - title: Твори и общайся
-    details: Широкое и дружелюбное комьюнити всегда поможет в трудной ситуации.
-  
-  - title: Более 100 различных библиотек
-    details: Готовые решения для автоматизации рутины специалиста по 1С
-  
-  - title: Enterprise-friendly
-    details: Решения не обязаны быть open-source, вы можете развернуть внутренний хаб пакетов
-
-  - title: Используется лучшими
-    details: Успешно применяется в ведущих банках, маркетплейсах, промышленности
-
 ---
+
+<CustomHero />
+
+<div class="features-section">
+
+## Возможности
+
+<div class="features-grid">
+  <div class="feature-card">
+    <div class="feature-icon">🚀</div>
+    <h3>Автоматизируй выпуск релизов</h3>
+    <p>С готовыми библиотеками для Jenkins, Gitlab CI, Docker</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon">🔄</div>
+    <h3>Обновляй типовые автоматически</h3>
+    <p>С помощью библиотек yard и vanessa-runner</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon">🌐</div>
+    <h3>Построй веб-сервис на 1С</h3>
+    <p>Встроенный веб-сервер на базе Kestrel и компонентный фреймворк WINOW</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon">✅</div>
+    <h3>Запускай тесты</h3>
+    <p>Различные фреймворки и методики тестирования TDD, BDD</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon">💬</div>
+    <h3>Твори и общайся</h3>
+    <p>Широкое и дружелюбное комьюнити всегда поможет в трудной ситуации</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon">📦</div>
+    <h3>Более 100 различных библиотек</h3>
+    <p>Готовые решения для автоматизации рутины специалиста по 1С</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon">🏢</div>
+    <h3>Enterprise-friendly</h3>
+    <p>Решения не обязаны быть open-source, вы можете развернуть внутренний хаб пакетов</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon">⭐</div>
+    <h3>Используется лучшими</h3>
+    <p>Успешно применяется в ведущих банках, маркетплейсах, промышленности</p>
+  </div>
+</div>
 
 ## Что это?
 
@@ -62,3 +70,80 @@ OneScript это независимая кросс-платформенная р
 Проект носит название OneScript, может быть сокращен при написании до названия 1Script или 1Скрипт.
 
 OneScript позволяет создавать и выполнять текстовые сценарии, написанные на языке, знакомом любому специалисту по системе 1С:Предприятие. Применение знакомого языка для скриптовой автоматизации позволяет значительно повысить продуктивность специалиста за счет более простой автоматизации ручных операций.
+
+</div>
+
+<style scoped>
+.features-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.features-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.feature-card {
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #5194D8 0%, #345DB9 100%);
+  transform: scaleX(0);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(81, 148, 216, 0.15);
+  border-color: var(--vp-c-brand-1);
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, #5194D8 0%, #345DB9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.feature-card p {
+  line-height: 1.7;
+  opacity: 0.85;
+  font-size: 0.95rem;
+  margin: 0;
+}
+</style>
