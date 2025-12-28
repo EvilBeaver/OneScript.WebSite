@@ -85,6 +85,7 @@
 
 .hero-logo {
   flex-shrink: 0;
+  margin-right: 1rem;
 }
 
 .hero-logo img {
@@ -158,6 +159,8 @@
     flex-direction: column;
     gap: 2rem;
     text-align: center;
+    margin: 0 auto;
+    padding: 0 1.5rem;
   }
   
   .hero-logo img {

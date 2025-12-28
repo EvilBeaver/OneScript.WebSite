@@ -72,7 +72,7 @@ export default defineConfig({
         {
           text: 'Быстрое вхождение',
           items: [
-            { text: 'Что такое 1Скрипт?', link: '/learn/' },
+            { text: 'Что такое OneScript?', link: '/learn/' },
             { text: 'Установка', link: '/learn/install' },
             { text: 'Среда разработки', link: '/learn/dev-tools' },
             { text: 'Урок: Информация о системе', link: '/learn/tutorial-info'},

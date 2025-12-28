@@ -76,13 +76,19 @@ const logos = [...baseLogos, ...baseLogos, ...baseLogos];
 .logo-track-container {
   display: flex;
   width: fit-content;
+  will-change: transform;
   animation: scroll-logos 20s linear infinite !important;
+}
+
+.logo-track-container:hover {
+  animation-play-state: paused;
 }
 
 .logo-track {
   display: flex;
   gap: 4rem;
   padding-right: 4rem;
+  pointer-events: none;
 }
 
 .logo-item {
@@ -91,6 +97,7 @@ const logos = [...baseLogos, ...baseLogos, ...baseLogos];
   align-items: center;
   gap: 0.75rem;
   flex-shrink: 0;
+  pointer-events: auto;
 }
 
 .logo-item img {
