@@ -11,7 +11,7 @@
         <div class="hero-text">
           <h1 class="hero-title">OneScript</h1>
           <p class="hero-description">
-            Независимая кросс-платформенная реализация виртуальной машины, исполняющей скрипты на языке 1С:Предприятие 8
+            Независимая кроссплатформенная реализация виртуальной машины, исполняющей скрипты на языке 1С:Предприятие 8
           </p>
           <div class="hero-actions">
             <a href="/learn/" class="hero-button primary">Изучить</a>
@@ -191,7 +191,7 @@ const scrollToContent = () => {
   font-weight: 600;
   text-decoration: none;
   border-radius: 6px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: opacity 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
 .hero-button.primary {
@@ -200,14 +200,13 @@ const scrollToContent = () => {
 }
 
 .hero-button.primary:hover {
-  transform: translateY(-2px);
   opacity: 0.9;
   color: white !important;
 }
 
 .hero-button.secondary {
   background: rgba(255, 255, 255, 0.1);
-  color: white;
+  color: white !important;
   border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
 }
@@ -215,7 +214,7 @@ const scrollToContent = () => {
 .hero-button.secondary:hover {
   background: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.5);
-  transform: translateY(-2px);
+  color: white !important;
 }
 
 @media (max-width: 768px) {
