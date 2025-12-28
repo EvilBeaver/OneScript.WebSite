@@ -10,7 +10,7 @@
               :key="'a-' + index" 
               class="logo-item"
             >
-              <img :src="logo.src" :alt="logo.name" />
+              <img :src="logo.src" :alt="logo.name" loading="lazy" />
               <span class="logo-name">{{ logo.name }}</span>
             </div>
           </div>
@@ -20,7 +20,7 @@
               :key="'b-' + index" 
               class="logo-item"
             >
-              <img :src="logo.src" :alt="logo.name" />
+              <img :src="logo.src" :alt="logo.name" loading="lazy" />
               <span class="logo-name">{{ logo.name }}</span>
             </div>
           </div>

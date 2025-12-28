@@ -1,6 +1,6 @@
 <script setup>
 import DefaultTheme from "vitepress/theme";
-import { onMounted, onUnmounted } from "vue";
+import { onMounted, onUnmounted, watch } from "vue";
 import { useRouter, useData } from "vitepress";
 import mediumZoom from "medium-zoom";
 
@@ -15,34 +15,52 @@ const setupMediumZoom = () => {
   });
 };
 
-// Handle navbar transparency on home page
+// Mark html with home class for CSS to work immediately
+const updateHomeClass = () => {
+  const isHome = frontmatter.value.layout === 'home';
+  if (isHome) {
+    document.documentElement.classList.add('is-home-page');
+    document.body.classList.add('is-home-page');
+  } else {
+    document.documentElement.classList.remove('is-home-page');
+    document.body.classList.remove('is-home-page');
+  }
+};
+
+// Handle navbar scroll state on home page
 const handleScroll = () => {
   const navbar = document.querySelector('.VPNavBar');
   if (!navbar) return;
   
   const isHome = frontmatter.value.layout === 'home';
+  if (!isHome) {
+    navbar.classList.remove('scrolled');
+    return;
+  }
+  
   const scrollY = window.scrollY;
   const heroHeight = window.innerHeight;
   
-  if (isHome && scrollY < heroHeight - 100) {
-    navbar.classList.add('transparent');
+  if (scrollY >= heroHeight - 100) {
+    navbar.classList.add('scrolled');
   } else {
-    navbar.classList.remove('transparent');
+    navbar.classList.remove('scrolled');
   }
 };
 
 const setupNavbarTransparency = () => {
-  // Initial call with delay to ensure DOM is ready
-  setTimeout(handleScroll, 0);
-  setTimeout(handleScroll, 100);
+  updateHomeClass();
+  handleScroll();
   window.addEventListener('scroll', handleScroll);
 };
 
 const cleanupNavbarTransparency = () => {
   window.removeEventListener('scroll', handleScroll);
+  document.documentElement.classList.remove('is-home-page');
+  document.body.classList.remove('is-home-page');
   const navbar = document.querySelector('.VPNavBar');
   if (navbar) {
-    navbar.classList.remove('transparent');
+    navbar.classList.remove('scrolled');
   }
 };
 
@@ -59,8 +77,8 @@ onUnmounted(() => {
 // Subscribe to route changes
 router.onAfterRouteChanged = () => {
   setupMediumZoom();
-  // Re-check navbar transparency after route change
-  setTimeout(handleScroll, 100);
+  updateHomeClass();
+  setTimeout(handleScroll, 50);
 };
 </script>
 

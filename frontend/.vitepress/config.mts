@@ -11,7 +11,19 @@ export default defineConfig({
   description: "OneScript. Официальная документация, релизы, справка, синтакс-помощник",
 
   head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }]
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    // Preload critical resources for faster initial load
+    ['link', { rel: 'preload', href: '/2.png', as: 'image' }],
+    ['link', { rel: 'preload', href: '/logo-white.png', as: 'image' }],
+    ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
+    // Inline script to set home page class immediately to prevent navbar flash
+    ['script', {}, `
+      (function() {
+        if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+          document.documentElement.classList.add('is-home-page');
+        }
+      })();
+    `],
   ],
 
   lang: 'ru-RU',

@@ -1,7 +1,7 @@
 <template>
   <div class="hero-wrapper">
     <div class="custom-hero">
-      <div class="hero-background">
+      <div class="hero-background" :class="{ loaded: bgLoaded }">
         <div class="hero-overlay"></div>
       </div>
       <div class="hero-content">
@@ -24,6 +24,17 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
+
+const bgLoaded = ref(false);
+
+onMounted(() => {
+  const img = new Image();
+  img.onload = () => {
+    bgLoaded.value = true;
+  };
+  img.src = '/2.png';
+});
 </script>
 
 <style>
@@ -50,11 +61,18 @@
   transform: translateX(-50%);
   width: 100vw;
   height: 100%;
-  background-image: url('/2-min.png');
+  background-image: url('/2-blur.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   z-index: 0;
+  transition: filter 0.3s ease;
+  filter: blur(10px);
+}
+
+.hero-background.loaded {
+  background-image: url('/2.png');
+  filter: blur(0);
 }
 
 .hero-overlay {
