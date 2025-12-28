@@ -433,17 +433,21 @@ html.is-home-page .VPNavBar.scrolled .VPNavBarSearch {
 /* Remove padding for home page to allow full-screen hero */
 .VPContent.is-home {
   padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 /* Make home page content wider */
 .VPHome {
   max-width: 100% !important;
   padding: 0 !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .VPHome .vp-doc {
   max-width: 100% !important;
   padding: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 /**
@@ -484,7 +488,7 @@ body {
 
 .VPFooter {
   border-top: 1px solid var(--vp-c-divider);
-  padding: 2rem 0;
+  padding: 3rem 0 !important;
   margin-top: 2rem;
 }
 
