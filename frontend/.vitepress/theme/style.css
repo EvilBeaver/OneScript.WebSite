@@ -306,14 +306,36 @@
   border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
+/* Hide search on home page */
+.VPNavBar.transparent .VPNavBarSearch {
+  display: none !important;
+}
+
+/* Title styling - normal state (not gradient) */
 .VPNavBarTitle .title {
   font-weight: 700;
+  color: var(--vp-c-text-1) !important;
+  -webkit-text-fill-color: var(--vp-c-text-1) !important;
+  background: none !important;
+  transition: all 0.3s ease !important;
+  text-decoration: none !important;
+}
+
+/* Title gradient on hover */
+.VPNavBarTitle:hover .title {
   background: linear-gradient(135deg, #5194D8 0%, #345DB9 100%) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
-  transition: all 0.3s ease !important;
-  text-decoration: none !important;
+}
+
+/* Search box styling - wider */
+.VPNavBarSearch {
+  padding-left: 16px !important;
+}
+
+.VPNavBarSearch .DocSearch-Button {
+  min-width: 200px !important;
 }
 
 .VPNavBarTitle a {

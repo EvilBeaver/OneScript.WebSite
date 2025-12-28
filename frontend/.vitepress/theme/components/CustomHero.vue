@@ -96,63 +96,64 @@ onMounted(() => {
 }
 
 .hero-text {
-  max-width: 700px;
+  max-width: 750px;
 }
 
 .hero-title {
-  font-size: 7rem;
+  font-size: 9rem;
   font-weight: 800;
   color: white;
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 1rem 0;
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
 
 .hero-description {
-  font-size: 1.1rem;
+  font-size: 1.35rem;
   color: rgba(255, 255, 255, 0.85);
-  margin: 0 0 3rem 0;
+  margin-bottom: 3rem;
   line-height: 1.7;
 }
 
 .hero-actions {
   display: flex;
-  gap: 0.75rem;
+  gap: 1rem;
   flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 .hero-button {
   display: inline-block;
-  padding: 0.6rem 1.25rem;
-  font-size: 0.9rem;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
   border-radius: 6px;
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .hero-button.primary {
   background: linear-gradient(135deg, #5194D8 0%, #345DB9 100%);
-  color: white;
-  box-shadow: 0 4px 20px rgba(81, 148, 216, 0.4);
+  color: white !important;
 }
 
 .hero-button.primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 30px rgba(81, 148, 216, 0.6);
+  transform: translateY(-2px);
+  opacity: 0.9;
+  color: white !important;
 }
 
 .hero-button.secondary {
   background: rgba(255, 255, 255, 0.1);
   color: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
 }
 
 .hero-button.secondary:hover {
   background: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.5);
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 .scroll-indicator {
