@@ -19,6 +19,29 @@
           </div>
         </div>
       </div>
+      <div class="hero-code-decoration">
+        <pre><code><span class="keyword">#Использовать</span> fs
+
+<span class="keyword">Процедура</span> <span class="function">ОбработатьФайлы</span>()
+    Путь  = ФС.НормализоватьПуть(<span class="string">"./data"</span>);
+    Файлы = НайтиФайлы(Путь, <span class="string">"*.json"</span>);
+
+    <span class="keyword">Для Каждого</span> Файл <span class="keyword">Из</span> Файлы <span class="keyword">Цикл</span>
+        ЧтениеJSON = <span class="keyword">Новый</span> ЧтениеJSON;
+        ЧтениеJSON.ОткрытьФайл(Файл.ПолноеИмя);
+        Данные = ПрочитатьJSON(ЧтениеJSON);
+        ОбработатьДанные(Данные);
+    <span class="keyword">КонецЦикла</span>;
+
+<span class="keyword">КонецПроцедуры</span>
+
+<span class="keyword">Процедура</span> <span class="function">ОбработатьДанные</span>(Данные)
+    <span class="keyword">Для Каждого</span> Элемент <span class="keyword">Из</span> Данные <span class="keyword">Цикл</span>
+        Сообщить(Элемент.Значение);
+    <span class="keyword">КонецЦикла</span>;
+<span class="keyword">КонецПроцедуры</span>
+</code></pre>
+      </div>
       <button class="scroll-down-btn" @click="scrollToContent" aria-label="Прокрутить вниз">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="6 9 12 15 18 9"></polyline>
@@ -42,24 +65,30 @@ onMounted(() => {
 });
 
 const scrollToContent = () => {
+  // Temporarily disable CSS smooth scroll to avoid conflicts
+  const html = document.documentElement;
+  const originalBehavior = html.style.scrollBehavior;
+  html.style.scrollBehavior = 'auto';
+  
   const targetY = window.innerHeight - 50;
   const startY = window.scrollY;
   const distance = targetY - startY;
-  const duration = 800;
-  let startTime = null;
+  const duration = 600;
+  const startTime = performance.now();
 
-  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+  const easeOutQuad = (t) => t * (2 - t);
 
   const animate = (currentTime) => {
-    if (!startTime) startTime = currentTime;
     const elapsed = currentTime - startTime;
     const progress = Math.min(elapsed / duration, 1);
-    const eased = easeOutCubic(progress);
+    const eased = easeOutQuad(progress);
     
     window.scrollTo(0, startY + distance * eased);
     
     if (progress < 1) {
       requestAnimationFrame(animate);
+    } else {
+      html.style.scrollBehavior = originalBehavior;
     }
   };
 
@@ -139,7 +168,7 @@ const scrollToContent = () => {
   position: relative;
   z-index: 2;
   max-width: 1280px;
-  margin: 3rem auto 0 18%;
+  margin: 3rem auto 0 15%;
   padding: 0 2rem;
   width: 100%;
   display: flex;
@@ -218,12 +247,23 @@ const scrollToContent = () => {
 }
 
 @media (max-width: 768px) {
+  .custom-hero {
+    align-items: flex-start;
+    padding-top: calc(var(--vp-nav-height, 64px) + 4rem);
+  }
   .hero-content {
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
     text-align: center;
     margin: 0 auto;
     padding: 0 1.5rem;
+    align-items: center;
+  }
+  .hero-logo {
+    margin-right: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
   .hero-logo img {
     width: 120px;
@@ -298,6 +338,60 @@ const scrollToContent = () => {
 
 @media (max-width: 768px) {
   .scroll-down-btn {
+    display: none;
+  }
+}
+
+/* Decorative code block */
+.hero-code-decoration {
+  position: absolute;
+  right: 15%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  max-width: 480px;
+  opacity: 0.85;
+}
+
+.hero-code-decoration pre {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+.hero-code-decoration code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: pre;
+}
+
+.hero-code-decoration .comment {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}
+
+.hero-code-decoration .keyword {
+  color: #93c5fd;
+}
+
+.hero-code-decoration .function {
+  color: #fcd34d;
+}
+
+.hero-code-decoration .string {
+  color: #86efac;
+}
+
+@media (max-width: 1800px) {
+  .hero-code-decoration {
     display: none;
   }
 }
