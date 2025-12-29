@@ -346,7 +346,7 @@ const scrollToContent = () => {
 .hero-code-decoration {
   position: absolute;
   right: 15%;
-  top: 50%;
+  top: 51%;
   transform: translateY(-50%);
   z-index: 2;
   background: rgba(0, 0, 0, 0.4);
