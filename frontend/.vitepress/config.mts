@@ -11,7 +11,19 @@ export default defineConfig({
   description: "OneScript. Официальная документация, релизы, справка, синтакс-помощник",
 
   head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }]
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    // Preload critical resources for faster initial load
+    ['link', { rel: 'preload', href: '/2-min.png', as: 'image' }],
+    ['link', { rel: 'preload', href: '/logo-white-small.png', as: 'image' }],
+    ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
+    // Inline script to set home page class immediately to prevent navbar flash
+    ['script', {}, `
+      (function() {
+        if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+          document.documentElement.classList.add('is-home-page');
+        }
+      })();
+    `],
   ],
 
   lang: 'ru-RU',
@@ -72,7 +84,7 @@ export default defineConfig({
         {
           text: 'Быстрое вхождение',
           items: [
-            { text: 'Что такое 1Скрипт?', link: '/learn/' },
+            { text: 'Что такое OneScript?', link: '/learn/' },
             { text: 'Установка', link: '/learn/install' },
             { text: 'Среда разработки', link: '/learn/dev-tools' },
             { text: 'Урок: Информация о системе', link: '/learn/tutorial-info'},
@@ -164,6 +176,11 @@ export default defineConfig({
     darkModeSwitchTitle: 'Переключить на тёмную тему',
     sidebarMenuLabel: 'Меню',
     returnToTopLabel: 'Вернуться к началу',
+    
+    footer: {
+      message: 'All trademarks, logos, and brand names are the property of their respective owners. Use of these names, trademarks, and brands does not imply endorsement.',
+      copyright: `© ${new Date().getFullYear()} OneScript. All rights reserved.`
+    },
   },
   
   async transformPageData(pageData, _) {

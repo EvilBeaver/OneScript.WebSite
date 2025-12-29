@@ -6,6 +6,9 @@ import DefaultTheme from 'vitepress/theme'
 import { yandexMetrika } from '@hywax/vitepress-yandex-metrika'
 
 import Layout from "./Layout.vue";
+import CustomHero from "./components/CustomHero.vue";
+import LogoCarousel from "./components/LogoCarousel.vue";
+import InfoBlock from "./components/InfoBlock.vue";
 import './style.css'
 
 export default {
@@ -17,5 +20,8 @@ export default {
         id: 31993926,
       },
     })
+    ctx.app.component('CustomHero', CustomHero)
+    ctx.app.component('LogoCarousel', LogoCarousel)
+    ctx.app.component('InfoBlock', InfoBlock)
   }
 } satisfies Theme
