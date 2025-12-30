@@ -20,25 +20,16 @@
         </div>
       </div>
       <div class="hero-code-decoration">
-        <pre><code><span class="keyword">#Использовать</span> fs
+        <pre><code><span class="keyword">Процедура</span> <span class="function">ОбработатьФайлы</span>()
 
-<span class="keyword">Процедура</span> <span class="function">ОбработатьФайлы</span>()
-    Путь  = ФС.НормализоватьПуть(<span class="string">"./data"</span>);
-    Файлы = НайтиФайлы(Путь, <span class="string">"*.json"</span>);
+    Файлы = НайтиФайлы(ТекущийКаталог(), <span class="string">"*.json"</span>);
 
     <span class="keyword">Для Каждого</span> Файл <span class="keyword">Из</span> Файлы <span class="keyword">Цикл</span>
-        ЧтениеJSON = <span class="keyword">Новый</span> ЧтениеJSON;
-        ЧтениеJSON.ОткрытьФайл(Файл.ПолноеИмя);
-        Данные = ПрочитатьJSON(ЧтениеJSON);
-        ОбработатьДанные(Данные);
+        Сообщить(Файл.ПолноеИмя);
+        Сообщить(Файл.Имя); 
+        Сообщить(Файл.Расширение); 
     <span class="keyword">КонецЦикла</span>;
 
-<span class="keyword">КонецПроцедуры</span>
-
-<span class="keyword">Процедура</span> <span class="function">ОбработатьДанные</span>(Данные)
-    <span class="keyword">Для Каждого</span> Элемент <span class="keyword">Из</span> Данные <span class="keyword">Цикл</span>
-        Сообщить(Элемент.Значение);
-    <span class="keyword">КонецЦикла</span>;
 <span class="keyword">КонецПроцедуры</span>
 </code></pre>
       </div>
@@ -73,7 +64,7 @@ const scrollToContent = () => {
   const targetY = window.innerHeight - 50;
   const startY = window.scrollY;
   const distance = targetY - startY;
-  const duration = 600;
+  const duration = 300;
   const startTime = performance.now();
 
   const easeOutQuad = (t) => t * (2 - t);
