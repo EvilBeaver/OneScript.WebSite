@@ -5,24 +5,30 @@
       <div class="logo-carousel">
         <div class="logo-track-container">
           <div class="logo-track">
-            <div 
+            <a 
               v-for="(logo, index) in logos" 
               :key="'a-' + index" 
+              :href="logo.url"
+              target="_blank"
+              rel="noopener noreferrer"
               class="logo-item"
             >
               <img :src="logo.src" :alt="logo.name" loading="lazy" />
               <span class="logo-name">{{ logo.name }}</span>
-            </div>
+            </a>
           </div>
           <div class="logo-track">
-            <div 
+            <a 
               v-for="(logo, index) in logos" 
               :key="'b-' + index" 
+              :href="logo.url"
+              target="_blank"
+              rel="noopener noreferrer"
               class="logo-item"
             >
               <img :src="logo.src" :alt="logo.name" loading="lazy" />
               <span class="logo-name">{{ logo.name }}</span>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -32,10 +38,10 @@
 
 <script setup>
 const baseLogos = [
-  { src: '/logos/NASA.png', name: 'NASA' },
-  { src: '/logos/Б.Ю.Александров.png', name: 'Б.Ю.Александров' },
-  { src: '/logos/Мелкософт.png', name: 'Мелкософт' },
-  { src: '/logos/Уганда.png', name: 'Уганда' },
+  { src: '/logos/NASA.png', name: 'NASA', url: 'https://www.nasa.gov/' },
+  { src: '/logos/Б.Ю.Александров.png', name: 'Б.Ю.Александров', url: 'https://rostagrocomplex.ru/' },
+  { src: '/logos/Мелкософт.png', name: 'Мелкософт', url: 'https://www.microsoft.com/' },
+  { src: '/logos/Уганда.png', name: 'Уганда', url: 'https://www.gov.ug/' },
 ];
 
 // Repeat to fill the screen width
@@ -98,6 +104,7 @@ const logos = [...baseLogos, ...baseLogos, ...baseLogos];
   gap: 0.75rem;
   flex-shrink: 0;
   pointer-events: auto;
+  text-decoration: none;
 }
 
 .logo-item img {
