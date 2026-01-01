@@ -38,10 +38,11 @@
 
 <script setup>
 const baseLogos = [
-  { src: '/logos/NASA.png', name: 'NASA', url: 'https://www.nasa.gov/' },
-  { src: '/logos/Б.Ю.Александров.png', name: 'Б.Ю.Александров', url: 'https://rostagrocomplex.ru/' },
-  { src: '/logos/Мелкософт.png', name: 'Мелкософт', url: 'https://www.microsoft.com/' },
-  { src: '/logos/Уганда.png', name: 'Уганда', url: 'https://www.gov.ug/' },
+  { src: '/logos/infostart-logo.png', name: 'Infostart', url: 'https://www.infostart.ru/' },
+  { src: '/logos/korus_logo_small.png', name: 'КОРУС Консалтинг', url: 'https://korusconsulting.ru/' },
+  { src: '/logos/Ozon_Tech_small_light.png', name: 'OZON Tech', url: 'https://ozon.ru/' },
+  { src: '/logos/Ventra_small.png', name: 'Ventra', url: 'https://ventra.ru/' },
+  { src: '/logos/mir_instr.png', name: 'Мир инструмента', url: 'https://instrument.ru/' },
 ];
 
 // Repeat to fill the screen width
