@@ -19,7 +19,7 @@ export default {
             'night-build',
             'preview',
             'lts',
-            'latest-dev'
+            'lts-dev'
         ];
         
         return (await getVersions())

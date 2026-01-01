@@ -18,4 +18,4 @@ import Releases from '../components/Releases.vue'
 
 ## Разрабатываемая LTS-версия
 
-<Releases versionToken="latest-dev" />
+<Releases versionToken="lts-dev" />
