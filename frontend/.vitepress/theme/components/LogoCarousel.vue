@@ -13,7 +13,7 @@
               rel="noopener noreferrer"
               class="logo-item"
             >
-              <img :src="logo.src" :alt="logo.name" loading="lazy" />
+              <img :src="isDark && logo.srcDark ? logo.srcDark : logo.src" :alt="logo.name" loading="lazy" />
               <span class="logo-name">{{ logo.name }}</span>
             </a>
           </div>
@@ -26,7 +26,7 @@
               rel="noopener noreferrer"
               class="logo-item"
             >
-              <img :src="logo.src" :alt="logo.name" loading="lazy" />
+              <img :src="isDark && logo.srcDark ? logo.srcDark : logo.src" :alt="logo.name" loading="lazy" />
               <span class="logo-name">{{ logo.name }}</span>
             </a>
           </div>
@@ -37,12 +37,18 @@
 </template>
 
 <script setup>
+import { useData } from 'vitepress';
+
+const { isDark } = useData();
+
 const baseLogos = [
-  { src: '/logos/infostart-logo.png', name: 'Infostart', url: 'https://www.infostart.ru/' },
-  { src: '/logos/korus_logo_small.png', name: 'КОРУС Консалтинг', url: 'https://korusconsulting.ru/' },
-  { src: '/logos/Ozon_Tech_small_light.png', name: 'OZON Tech', url: 'https://ozon.ru/' },
-  { src: '/logos/Ventra_small.png', name: 'Ventra', url: 'https://ventra.ru/' },
-  { src: '/logos/mir_instr.png', name: 'Мир инструмента', url: 'https://instrument.ru/' },
+  { src: '/logos/infostart.png', srcDark: undefined, name: 'Infostart', url: 'https://www.infostart.ru/' },
+  { src: '/logos/korus.png', srcDark: undefined, name: 'КОРУС Консалтинг', url: 'https://korusconsulting.ru/' },
+  { src: '/logos/OzonTech_light.png', srcDark: '/logos/OzonTech_dark.png', name: 'OZON Tech', url: 'https://ozon.ru/' },
+  { src: '/logos/Ventra_light.png', srcDark: '/logos/Ventra_dark.png', name: 'Ventra', url: 'https://ventra.ru/' },
+  { src: '/logos/mir_instr.png', srcDark: undefined, name: 'Мир инструмента', url: 'https://instrument.ru/' },
+  // Пример добавления логотипа с отдельной версией для темной темы:
+  // { src: '/logos/example.png', srcDark: '/logos/example-dark.png', name: 'Example', url: 'https://example.com/' },
 ];
 
 // Repeat to fill the screen width
@@ -118,8 +124,18 @@ const logos = [...baseLogos, ...baseLogos, ...baseLogos];
   transition: all 0.3s ease;
 }
 
+.dark .logo-item img {
+  filter: grayscale(100%) brightness(2.5) contrast(0.8);
+  opacity: 0.7;
+}
+
 .logo-item:hover img {
   filter: grayscale(0%);
+  opacity: 1;
+}
+
+.dark .logo-item:hover img {
+  filter: grayscale(0%) brightness(1);
   opacity: 1;
 }
 
