@@ -1,58 +1,55 @@
 /**
- * Customize default theme styling by overriding CSS variables:
- * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
+ * OneScript Custom Theme
+ * Modern and stylish customization for VitePress
  */
 
-/**
- * Colors
- *
- * Each colors have exact same color scale system with 3 levels of solid
- * colors with different brightness, and 1 soft color.
- *
- * - `XXX-1`: The most solid color used mainly for colored text. It must
- *   satisfy the contrast ratio against when used on top of `XXX-soft`.
- *
- * - `XXX-2`: The color used mainly for hover state of the button.
- *
- * - `XXX-3`: The color for solid background, such as bg color of the button.
- *   It must satisfy the contrast ratio with pure white (#ffffff) text on
- *   top of it.
- *
- * - `XXX-soft`: The color used for subtle background such as custom container
- *   or badges. It must satisfy the contrast ratio when putting `XXX-1` colors
- *   on top of it.
- *
- *   The soft color must be semi transparent alpha channel. This is crucial
- *   because it allows adding multiple "soft" colors on top of each other
- *   to create a accent, such as when having inline code block inside
- *   custom containers.
- *
- * - `default`: The color used purely for subtle indication without any
- *   special meanings attached to it such as bg color for menu hover state.
- *
- * - `brand`: Used for primary brand colors, such as link text, button with
- *   brand theme, etc.
- *
- * - `tip`: Used to indicate useful information. The default theme uses the
- *   brand color for this by default.
- *
- * - `warning`: Used to indicate warning to the users. Used in custom
- *   container, badges, etc.
- *
- * - `danger`: Used to show error, or dangerous message to the users. Used
- *   in custom container, badges, etc.
- * -------------------------------------------------------------------------- */
+/* Global keyframes for hero bounce animation */
+@keyframes hero-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* Global keyframes for logo carousel */
+@keyframes scroll-logos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
 
 :root {
+  /* Custom brand colors - OneScript blue theme */
+  --os-primary: #4a90d9;
+  --os-primary-light: #5194D8;
+  --os-primary-dark: #345DB9;
+  --os-secondary: #2d5aa0;
+  --os-accent: #60a5fa;
+  --os-gradient: linear-gradient(135deg, #5194D8 0%, #345DB9 100%);
+  --os-gradient-alt: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  
+  /* Custom background colors - warm gray tones */
+  --vp-c-bg: #fafafa;
+  --vp-c-bg-soft: #f5f5f5;
+  --vp-c-bg-mute: #eeeeee;
+  --vp-c-bg-alt: #f5f5f5;
+  
+  /* VitePress color overrides */
   --vp-c-default-1: var(--vp-c-gray-1);
   --vp-c-default-2: var(--vp-c-gray-2);
   --vp-c-default-3: var(--vp-c-gray-3);
   --vp-c-default-soft: var(--vp-c-gray-soft);
 
-  --vp-c-brand-1: var(--vp-c-indigo-1);
-  --vp-c-brand-2: var(--vp-c-indigo-2);
-  --vp-c-brand-3: var(--vp-c-indigo-3);
-  --vp-c-brand-soft: var(--vp-c-indigo-soft);
+  /* Brand colors for light theme - darker, more readable */
+  --vp-c-brand-1: #2563eb;
+  --vp-c-brand-2: #1d4ed8;
+  --vp-c-brand-3: #1e40af;
+  --vp-c-brand-soft: rgba(37, 99, 235, 0.12);
 
   --vp-c-tip-1: var(--vp-c-brand-1);
   --vp-c-tip-2: var(--vp-c-brand-2);
@@ -70,8 +67,21 @@
   --vp-c-danger-soft: var(--vp-c-red-soft);
 }
 
+.dark {
+  /* Brand colors for dark theme - softer, less glowing */
+  --vp-c-brand-1: #60a5fa;
+  --vp-c-brand-2: #3b82f6;
+  --vp-c-brand-3: #2563eb;
+  --vp-c-brand-soft: rgba(96, 165, 250, 0.12);
+  
+  --vp-c-bg: #18181b;
+  --vp-c-bg-soft: #27272a;
+  --vp-c-bg-mute: #3f3f46;
+  --vp-c-bg-alt: #27272a;
+}
+
 /**
- * Component: Button
+ * Component: Button - Modern gradient buttons
  * -------------------------------------------------------------------------- */
 
 :root {
@@ -86,32 +96,45 @@
   --vp-button-brand-active-bg: var(--vp-c-brand-1);
 }
 
+.VPButton.brand {
+  background: linear-gradient(135deg, #5194D8 0%, #345DB9 100%);
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(81, 148, 216, 0.3);
+}
+
+.VPButton.brand:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(81, 148, 216, 0.4);
+}
+
+.VPButton.alt {
+  border: 2px solid var(--vp-c-brand-1);
+  transition: all 0.3s ease;
+}
+
+.VPButton.alt:hover {
+  background: var(--vp-c-brand-soft);
+  transform: translateY(-2px);
+}
+
 /**
- * Component: Home
+ * Component: Home - Modern hero section with animations
  * -------------------------------------------------------------------------- */
 
 :root {
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: var(--vp-c-brand-1)
-
-  /*--vp-home-hero-image-background-image: linear-gradient(
-    -45deg,
-    #eecaff 50%,
-    #526066 50%
-  );
-  --vp-home-hero-image-filter: blur(44px);*/
+  --vp-home-hero-name-background: linear-gradient(135deg, #5194D8 0%, #345DB9 100%);
 }
 
-@media (min-width: 640px) {
-  :root {
-    --vp-home-hero-image-filter: blur(56px);
-  }
+/* Hero section enhancements */
+.VPHero {
+  display: none !important;
 }
 
-@media (min-width: 960px) {
-  :root {
-    --vp-home-hero-image-filter: blur(68px);
-  }
+/* Hide default home hero */
+.Layout.home .VPHero {
+  display: none !important;
 }
 
 /**
@@ -132,4 +155,341 @@
 .DocSearch {
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
+
+/**
+ * Features Section - Modern card design with hover effects
+ * -------------------------------------------------------------------------- */
+
+.VPFeatures {
+  position: relative;
+  padding: 4rem 1.5rem !important;
+  margin-top: 3rem !important;
+}
+
+.VPFeature {
+  background: var(--vp-c-bg-soft) !important;
+  border: 1px solid var(--vp-c-divider) !important;
+  border-radius: 16px !important;
+  padding: 2rem !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.VPFeature::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #5194D8 0%, #345DB9 100%);
+  transform: scaleX(0);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.VPFeature:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 12px 40px rgba(81, 148, 216, 0.15) !important;
+  border-color: var(--vp-c-brand-1) !important;
+}
+
+.VPFeature:hover::before {
+  transform: scaleX(1);
+}
+
+.VPFeature .icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+
+.VPFeature:hover .icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.VPFeature .title {
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.75rem !important;
+  background: linear-gradient(135deg, #5194D8 0%, #345DB9 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  position: relative;
+  z-index: 2;
+}
+
+.VPFeature .details {
+  line-height: 1.7 !important;
+  opacity: 0.85;
+  font-size: 0.95rem !important;
+  position: relative;
+  z-index: 2;
+}
+
+/**
+ * Custom content sections styling
+ * -------------------------------------------------------------------------- */
+
+.vp-doc h2 {
+  border-top: none;
+  margin-top: 3rem;
+  padding-top: 2rem;
+}
+
+.vp-doc a {
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.vp-doc a:hover {
+  color: var(--vp-c-brand-2);
+}
+
+/**
+ * Navigation enhancements
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-nav-bg-color: rgba(255, 255, 255, 0.95);
+}
+
+.dark {
+  --vp-nav-bg-color: rgba(26, 26, 26, 0.95);
+}
+
+/* Standard navbar styling */
+.VPNavBar {
+  backdrop-filter: blur(10px) !important;
+  background-color: var(--vp-nav-bg-color) !important;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease !important;
+  border-bottom: none !important;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Remove ALL divider lines and borders in navbar */
+.VPNavBar *::after,
+.VPNavBar *::before {
+  display: none !important;
+}
+
+.VPNavBar .divider,
+.VPNavBar .divider-line {
+  display: none !important;
+}
+
+.VPNavBar .content,
+.VPNavBar .content-body,
+.VPNavBar .curtain,
+.VPNavBar .VPNavBarTitle {
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Transparent navbar on home hero - initial state via CSS */
+/* On home page, navbar uses CSS variable for gradual opacity */
+html.is-home-page .VPNavBar:not(.scrolled) {
+  --navbar-opacity: 0;
+  background-color: rgba(255, 255, 255, calc(0.95 * var(--navbar-opacity, 0))) !important;
+  backdrop-filter: blur(calc(10px * var(--navbar-opacity, 0))) !important;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, calc(0.08 * var(--navbar-opacity, 0))) !important;
+}
+
+html.is-home-page.dark .VPNavBar:not(.scrolled) {
+  background-color: rgba(26, 26, 26, calc(0.95 * var(--navbar-opacity, 0))) !important;
+}
+
+/* Text color transitions based on opacity */
+html.is-home-page .VPNavBar:not(.scrolled) .VPNavBarTitle .title {
+  color: color-mix(in srgb, white calc((1 - var(--navbar-opacity, 0)) * 100%), var(--vp-c-text-1)) !important;
+  -webkit-text-fill-color: color-mix(in srgb, white calc((1 - var(--navbar-opacity, 0)) * 100%), var(--vp-c-text-1)) !important;
+  background: none !important;
+}
+
+html.is-home-page .VPNavBar:not(.scrolled) .VPNavBarMenuLink {
+  color: color-mix(in srgb, white calc((1 - var(--navbar-opacity, 0)) * 100%), var(--vp-c-text-1)) !important;
+}
+
+html.is-home-page .VPNavBar:not(.scrolled) .VPSocialLink {
+  color: color-mix(in srgb, white calc((1 - var(--navbar-opacity, 0)) * 100%), var(--vp-c-text-1)) !important;
+}
+
+/* Hide search on home page when transparent */
+html.is-home-page .VPNavBar:not(.scrolled) .VPNavBarSearch {
+  opacity: var(--navbar-opacity, 0);
+  pointer-events: none;
+}
+
+html.is-home-page .VPNavBar.scrolled .VPNavBarSearch {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Legacy support */
+.VPNavBar.transparent {
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+.VPNavBar.transparent .VPNavBarTitle .title {
+  color: white !important;
+  -webkit-text-fill-color: white !important;
+  background: none !important;
+}
+
+.VPNavBar.transparent .VPNavBarMenuLink {
+  color: white !important;
+}
+
+.VPNavBar.transparent .VPSocialLink {
+  color: white !important;
+}
+
+/* Title styling - normal state (not gradient) */
+.VPNavBarTitle .title {
+  font-weight: 700;
+  color: var(--vp-c-text-1) !important;
+  -webkit-text-fill-color: var(--vp-c-text-1) !important;
+  background: none !important;
+  transition: all 0.3s ease !important;
+  text-decoration: none !important;
+}
+
+/* Title gradient on hover */
+.VPNavBarTitle:hover .title {
+  background: linear-gradient(135deg, #5194D8 0%, #345DB9 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* Search box styling - stretch to available width */
+.VPNavBarSearch {
+  flex: 1 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  padding-left: 24px !important;
+  padding-right: 16px !important;
+}
+
+.VPNavBarSearch .DocSearch-Button {
+  width: 300px !important;
+  justify-content: space-between !important;
+}
+
+.VPNavBarTitle a {
+  text-decoration: none !important;
+}
+
+.VPNavBarTitle.has-sidebar {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+.VPNavBarTitle.has-sidebar::after {
+  display: none !important;
+}
+
+.VPNavBarTitle.has-sidebar a.title {
+  border-bottom: none !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+}
+
+.VPNavBarTitle.has-sidebar a.title::after {
+  display: none !important;
+}
+
+/* Fix sidebar positioning - should start below navbar */
+.VPSidebar {
+  top: var(--vp-nav-height) !important;
+  height: calc(100vh - var(--vp-nav-height)) !important;
+  padding-top: 1rem !important;
+  border-top: none !important;
+}
+
+.VPSidebar::before,
+.VPSidebar::after {
+  display: none !important;
+}
+
+/* Fix local nav line */
+.VPLocalNav {
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+.VPLocalNav::before,
+.VPLocalNav::after {
+  display: none !important;
+}
+
+/* Remove padding for home page to allow full-screen hero */
+.VPContent.is-home {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Make home page content wider */
+.VPHome {
+  max-width: 100% !important;
+  padding: 0 !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.VPHome .vp-doc {
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/**
+ * Smooth scrolling and animations
+ * -------------------------------------------------------------------------- */
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Removed fadeIn animation for faster perceived load */
+.VPContent {
+  /* animation removed for performance */
+}
+
+/**
+ * Code blocks styling
+ * -------------------------------------------------------------------------- */
+
+.vp-doc div[class*='language-'] {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.vp-doc div[class*='language-']:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/**
+ * Footer styling
+ * -------------------------------------------------------------------------- */
+
+.VPFooter {
+  border-top: 1px solid var(--vp-c-divider);
+  padding: 3rem 0 !important;
+  margin-top: 2rem;
+}
+
 

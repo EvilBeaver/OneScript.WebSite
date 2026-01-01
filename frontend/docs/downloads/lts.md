@@ -6,6 +6,7 @@ next: false
 
 <script setup>
 import Releases from '../components/Releases.vue'
+import ReleaseDocs from '../components/ReleaseDocs.vue'
 </script>
 
 # Версия LTS
