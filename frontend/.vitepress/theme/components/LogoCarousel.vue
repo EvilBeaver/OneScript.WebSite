@@ -44,7 +44,7 @@ const { isDark } = useData();
 const baseLogos = [
   { src: '/logos/infostart.png', srcDark: undefined, name: 'Infostart', url: 'https://www.infostart.ru/' },
   { src: '/logos/korus.png', srcDark: undefined, name: 'КОРУС Консалтинг', url: 'https://korusconsulting.ru/' },
-  { src: '/logos/OzonTech_light.png', srcDark: '/logos/OzonTech_dark.png', name: 'OZON Tech', url: 'https://ozon.ru/' },
+  { src: '/logos/OzonTech_light.png', srcDark: '/logos/OzonTech_dark.png', name: 'OZON Tech', url: 'https://ozon.tech/' },
   { src: '/logos/Ventra_light.png', srcDark: '/logos/Ventra_dark.png', name: 'Ventra', url: 'https://ventra.ru/' },
   { src: '/logos/mir_instr.png', srcDark: undefined, name: 'Мир инструмента', url: 'https://instrument.ru/' },
   // Пример добавления логотипа с отдельной версией для темной темы:
