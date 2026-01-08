@@ -3,33 +3,18 @@
     <h2 class="logo-carousel-title">Нам доверяют</h2>
     <div class="logo-carousel-wrapper">
       <div class="logo-carousel">
-        <div class="logo-track-container">
-          <div class="logo-track">
-            <a 
-              v-for="(logo, index) in logos" 
-              :key="'a-' + index" 
-              :href="logo.url"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="logo-item"
-            >
-              <img :src="isDark && logo.srcDark ? logo.srcDark : logo.src" :alt="logo.name" loading="lazy" />
-              <span class="logo-name">{{ logo.name }}</span>
-            </a>
-          </div>
-          <div class="logo-track">
-            <a 
-              v-for="(logo, index) in logos" 
-              :key="'b-' + index" 
-              :href="logo.url"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="logo-item"
-            >
-              <img :src="isDark && logo.srcDark ? logo.srcDark : logo.src" :alt="logo.name" loading="lazy" />
-              <span class="logo-name">{{ logo.name }}</span>
-            </a>
-          </div>
+        <div class="logo-track" ref="trackRef" :style="{ transform: `translateX(${offset}px)` }">
+          <a 
+            v-for="(logo, index) in allLogos" 
+            :key="index" 
+            :href="logo.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="logo-item"
+          >
+            <img :src="isDark && logo.srcDark ? logo.srcDark : logo.src" :alt="logo.name" loading="lazy" />
+            <span class="logo-name">{{ logo.name }}</span>
+          </a>
         </div>
       </div>
     </div>
@@ -37,6 +22,7 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useData } from 'vitepress';
 
 const { isDark } = useData();
@@ -51,8 +37,42 @@ const baseLogos = [
   // { src: '/logos/example.png', srcDark: '/logos/example-dark.png', name: 'Example', url: 'https://example.com/' },
 ];
 
-// Repeat to fill the screen width
-const logos = [...baseLogos, ...baseLogos, ...baseLogos];
+// Repeat enough times to fill and loop seamlessly
+const allLogos = [...baseLogos, ...baseLogos, ...baseLogos, ...baseLogos, ...baseLogos, ...baseLogos];
+
+const offset = ref(0);
+const trackRef = ref(null);
+let animationId = null;
+let lastTime = 0;
+const speed = 50; // pixels per second
+
+const animate = (currentTime) => {
+  if (!lastTime) lastTime = currentTime;
+  const delta = currentTime - lastTime;
+  lastTime = currentTime;
+  
+  offset.value -= (speed * delta) / 1000;
+  
+  // Reset when half of the track has scrolled
+  if (trackRef.value) {
+    const trackWidth = trackRef.value.scrollWidth / 2;
+    if (Math.abs(offset.value) >= trackWidth) {
+      offset.value = 0;
+    }
+  }
+  
+  animationId = requestAnimationFrame(animate);
+};
+
+onMounted(() => {
+  animationId = requestAnimationFrame(animate);
+});
+
+onUnmounted(() => {
+  if (animationId) {
+    cancelAnimationFrame(animationId);
+  }
+});
 </script>
 
 <style>
@@ -86,22 +106,10 @@ const logos = [...baseLogos, ...baseLogos, ...baseLogos];
   padding: 0;
 }
 
-.logo-track-container {
-  display: flex;
-  width: fit-content;
-  will-change: transform;
-  animation: scroll-logos 20s linear infinite !important;
-}
-
-.logo-track-container:hover {
-  animation-play-state: paused;
-}
-
 .logo-track {
   display: flex;
   gap: 4rem;
-  padding-right: 4rem;
-  pointer-events: none;
+  will-change: transform;
 }
 
 .logo-item {
@@ -110,7 +118,6 @@ const logos = [...baseLogos, ...baseLogos, ...baseLogos];
   align-items: center;
   gap: 0.75rem;
   flex-shrink: 0;
-  pointer-events: auto;
   text-decoration: none;
 }
 
@@ -152,7 +159,7 @@ const logos = [...baseLogos, ...baseLogos, ...baseLogos];
 
 @media (max-width: 768px) {
   .logo-track {
-    gap: 2rem;
+    gap: 3rem;
   }
   
   .logo-item img {
