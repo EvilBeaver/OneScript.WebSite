@@ -6,13 +6,13 @@
         <div class="logo-track" ref="trackRef" :style="{ transform: `translateX(${offset}px)` }">
           <a 
             v-for="(logo, index) in allLogos" 
-            :key="index" 
+            :key="`${index}-${isDark}`" 
             :href="logo.url"
             target="_blank"
             rel="noopener noreferrer"
             class="logo-item"
           >
-            <img :src="isDark && logo.srcDark ? logo.srcDark : logo.src" :alt="logo.name" loading="lazy" />
+            <img :src="getLogoSrc(logo)" :alt="logo.name" loading="lazy" />
             <span class="logo-name">{{ logo.name }}</span>
           </a>
         </div>
@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { useData } from 'vitepress';
 
 const { isDark } = useData();
@@ -41,6 +41,11 @@ const baseLogos = [
 
 // Repeat enough times to fill and loop seamlessly
 const allLogos = [...baseLogos, ...baseLogos, ...baseLogos, ...baseLogos, ...baseLogos, ...baseLogos];
+
+// Function to get the correct logo source based on current theme
+const getLogoSrc = (logo) => {
+  return isDark.value && logo.srcDark ? logo.srcDark : logo.src;
+};
 
 const offset = ref(0);
 const trackRef = ref(null);
