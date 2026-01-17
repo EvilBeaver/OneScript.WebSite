@@ -33,6 +33,8 @@ const baseLogos = [
   { src: '/logos/OzonTech_light.png', srcDark: '/logos/OzonTech_dark.png', name: 'OZON Tech', url: 'https://ozon.tech/' },
   { src: '/logos/Ventra_light.png', srcDark: '/logos/Ventra_dark.png', name: 'Ventra', url: 'https://ventra.ru/' },
   { src: '/logos/mir_instr.png', srcDark: undefined, name: 'Мир инструмента', url: 'https://instrument.ru/' },
+  { src: '/logos/BiaTech_light.png', srcDark: '/logos/BiaTech_dark.png', name: 'БИАТЕХ', url: 'https://bia-tech.ru/' },
+  { src: 'logos/Petrovich.png', srcDark: undefined, name: 'Петрович-ТЕХ', url: 'https://petrovich.tech/' },
   // Пример добавления логотипа с отдельной версией для темной темы:
   // { src: '/logos/example.png', srcDark: '/logos/example-dark.png', name: 'Example', url: 'https://example.com/' },
 ];
