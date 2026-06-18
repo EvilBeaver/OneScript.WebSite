@@ -8,6 +8,7 @@ export const baseLogos = [
   { src: '/logos/mir_instr.png', srcDark: undefined, name: 'Мир инструмента', url: 'https://instrument.ru/' },
   { src: '/logos/BiaTech_light.png', srcDark: '/logos/BiaTech_dark.png', name: 'БИАТЕХ', url: 'https://bia-tech.ru/' },
   { src: '/logos/Petrovich.png', srcDark: undefined, name: 'Петрович-ТЕХ', url: 'https://petrovich.tech/' },
+  { src: '/logos/deltaleasing.png', srcDark: '/logos/deltaleasing-dark.png', name: 'ДельтаЛизинг', url: 'https://deltaleasing.ru/' },
 ];
 
 // Имеет смысл в будущем скрывать часть лого, если они плохо вписываются в сетку
