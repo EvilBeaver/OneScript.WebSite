@@ -9,6 +9,7 @@ export const baseLogos = [
   { src: '/logos/BiaTech_light.png', srcDark: '/logos/BiaTech_dark.png', name: 'БИАТЕХ', url: 'https://bia-tech.ru/' },
   { src: '/logos/Petrovich.png', srcDark: undefined, name: 'Петрович-ТЕХ', url: 'https://petrovich.tech/' },
   { src: '/logos/deltaleasing.png', srcDark: '/logos/deltaleasing-dark.png', name: 'ДельтаЛизинг', url: 'https://deltaleasing.ru/' },
+  { src: '/logos/SM_Lab.png', srcDark: '/logos/SM_Lab_dark.png', name: 'Спортмастер Лаб', url: 'https://см-лаб.рф/' },
 ];
 
 // Имеет смысл в будущем скрывать часть лого, если они плохо вписываются в сетку

@@ -19,19 +19,8 @@
           </div>
         </div>
       </div>
-      <div class="hero-code-decoration">
-        <pre><code><span class="keyword">Процедура</span> <span class="function">ОбработатьФайлы</span>()
-
-    Файлы = НайтиФайлы(ТекущийКаталог(), <span class="string">"*.json"</span>);
-
-    <span class="keyword">Для Каждого</span> Файл <span class="keyword">Из</span> Файлы <span class="keyword">Цикл</span>
-        Сообщить(Файл.ПолноеИмя);
-        Сообщить(Файл.Имя); 
-        Сообщить(Файл.Расширение); 
-    <span class="keyword">КонецЦикла</span>;
-
-<span class="keyword">КонецПроцедуры</span>
-</code></pre>
+      <div class="hero-code-decoration" v-show="codeHtml">
+        <div v-html="codeHtml" />
       </div>
       <button class="scroll-down-btn" @click="scrollToContent" aria-label="Прокрутить вниз">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -44,10 +33,18 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { pickRandomHeroSample } from '../hero-samples';
+import { highlightHeroCode } from '../highlightHeroCode';
 
 const bgLoaded = ref(false);
+const codeHtml = ref('');
 
-onMounted(() => {
+onMounted(async () => {
+  const source = pickRandomHeroSample();
+  if (source) {
+    codeHtml.value = await highlightHeroCode(source);
+  }
+
   const img = new Image();
   img.onload = () => {
     bgLoaded.value = true;
@@ -349,36 +346,18 @@ const scrollToContent = () => {
   opacity: 0.85;
 }
 
-.hero-code-decoration pre {
+.hero-code-decoration .shiki {
   margin: 0;
   padding: 0;
-  background: transparent;
+  background: transparent !important;
   overflow: hidden;
 }
 
-.hero-code-decoration code {
+.hero-code-decoration .shiki code {
   font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
   font-size: 0.85rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
   white-space: pre;
-}
-
-.hero-code-decoration .comment {
-  color: rgba(255, 255, 255, 0.5);
-  font-style: italic;
-}
-
-.hero-code-decoration .keyword {
-  color: #93c5fd;
-}
-
-.hero-code-decoration .function {
-  color: #fcd34d;
-}
-
-.hero-code-decoration .string {
-  color: #86efac;
 }
 
 @media (max-width: 1800px) {
