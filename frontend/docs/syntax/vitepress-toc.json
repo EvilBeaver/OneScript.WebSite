@@ -691,6 +691,82 @@
       {
         "text": "HTTPСервисОтвет",
         "link": "/syntax/HTTPServiceResponse"
+      },
+      {
+        "text": "ВебСокет",
+        "link": "/syntax/WebSocket"
+      },
+      {
+        "text": "ДелегатЗапроса",
+        "link": "/syntax/RequestDelegate"
+      },
+      {
+        "text": "ИнформацияОСоединении",
+        "link": "/syntax/ConnectionInfo"
+      },
+      {
+        "text": "КонтекстПодключенияВебСокета",
+        "link": "/syntax/WebSocketsAcceptContext"
+      },
+      {
+        "text": "КукиЗапроса",
+        "link": "/syntax/RequestCookies"
+      },
+      {
+        "text": "КукиОтвета",
+        "link": "/syntax/ResponseCookies"
+      },
+      {
+        "text": "МенеджерВебСокетов",
+        "link": "/syntax/WebSocketsManager"
+      },
+      {
+        "text": "ПараметрыCookie",
+        "link": "/syntax/CookieOptions"
+      },
+      {
+        "text": "РежимSameSite",
+        "link": "/syntax/SameSiteMode"
+      },
+      {
+        "text": "РезультатВебСокетПолучения",
+        "link": "/syntax/WebSocketReceiveResult"
+      },
+      {
+        "text": "СловарьЗаголовков",
+        "link": "/syntax/HeaderDictionary"
+      },
+      {
+        "text": "СостояниеВебСокета",
+        "link": "/syntax/WebSocketState"
+      },
+      {
+        "text": "СтатусЗакрытияВебСокета",
+        "link": "/syntax/WebSocketCloseStatus"
+      },
+      {
+        "text": "СтроковыеЗначения",
+        "link": "/syntax/StringValues"
+      },
+      {
+        "text": "ТипСообщенияВебСокета",
+        "link": "/syntax/WebSocketMessageType"
+      },
+      {
+        "text": "ФайлФормы",
+        "link": "/syntax/FormFile"
+      },
+      {
+        "text": "ФайлыФормы",
+        "link": "/syntax/FormFiles"
+      },
+      {
+        "text": "ФлагиСообщенияВебСокета",
+        "link": "/syntax/WebSocketMessageFlags"
+      },
+      {
+        "text": "Форма",
+        "link": "/syntax/Form"
       }
     ]
   },
