@@ -118,7 +118,6 @@ export default defineConfig({
           items: [
             { text: 'Главное', link: '/downloads' },
             { text: 'Актуальная версия', link: '/downloads/latest' },
-            { text: 'Ознакомительная версия', link: '/downloads/preview' },
             { text: 'Версия LTS', link: '/downloads/lts' },
             { text: 'Версии в разработке', link: '/downloads/development' },
             { text: 'Архив версий', link: '/downloads/archive' },
