@@ -1,0 +1,19 @@
+# Фрагмент для docker-compose на сервере (правится один раз).
+#
+# Имя тома на хосте: <имя_проекта_compose>_wwwroot
+# Узнать: docker volume ls | grep wwwroot
+# Значение WWWROOT_VOLUME в Jenkinsfile должно совпадать с этим именем.
+#
+# При первом запуске с пустым томом Docker копирует в него содержимое
+# /app/data/wwwroot из образа. Дальнейшие обновления контента — только
+# через пайплайн (стадия Publish content), пересборка образа том не меняет.
+
+services:
+  site:
+    image: oscript/backend
+    volumes:
+      - wwwroot:/app/data/wwwroot
+      - /var/www/oscript.io:/var/www/oscript.io
+
+volumes:
+  wwwroot:
