@@ -57,7 +57,20 @@ pipeline {
                         passwordVariable: 'DOCKERHUB_PASS'
                     )]) {
                         sh 'printf "%s" "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USER" --password-stdin'
-                        sh 'docker buildx build --load -t oscript/backend .'
+                        sh '''
+                            if ! docker buildx inspect oscript-buildkit-v0.30.0 >/dev/null 2>&1; then
+                                docker buildx create \
+                                    --name oscript-buildkit-v0.30.0 \
+                                    --driver docker-container \
+                                    --driver-opt image=moby/buildkit:v0.30.0
+                            fi
+                            docker buildx inspect oscript-buildkit-v0.30.0 --bootstrap
+                            docker buildx build \
+                                --builder oscript-buildkit-v0.30.0 \
+                                --load \
+                                -t oscript/backend \
+                                .
+                        '''
                     }
                 }
             }
