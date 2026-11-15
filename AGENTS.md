@@ -42,7 +42,7 @@ OneScript.WebSite/
 
 1. **Сборка:** `npm run docs:build` в `frontend/` генерирует статику в `backend/data/wwwroot` (переопределяется через `VITEPRESS_OUT`).
 2. **Запуск:** бэкенд слушает порт **3030**, раздаёт `wwwroot` как статику и обрабатывает динамические маршруты.
-3. **Данные релизов:** каталог `backend/files/` (в конфиге — `filesDir`) содержит дистрибутивы и markdown-описания версий. На сервере монтируется как `/var/www/oscript.io`.
+3. **Данные релизов:** каталог `backend/files/` (в конфиге — `filesDir`) содержит дистрибутивы и markdown-описания версий. На сервере это каталог `oscript.io` внутри named volume `os_web_content`, смонтированного в контейнер как `/var/www` (путь в контейнере — `/var/www/oscript.io`).
 
 ### Маршруты бэкенда
 
@@ -138,20 +138,99 @@ cd backend && oscript src/main.os                  # бэк на :3030 (нуже
 2. **Publish content** — `unstash`, атомарная публикация сборки в named volume `wwwroot` через docker-сокет агента (`tar` → временный `alpine` + `rsync --delete-after`). Контейнер сайта не пересоздаётся.
 3. **Create container** — `unstash`, `docker buildx build` образа `oscript/backend` из `backend/` (образ остаётся самодостаточным для развёртывания с нуля).
 
-### Деплой wwwroot без пересоздания контейнера
+### Деплой сайта (docker-compose и Jenkins)
 
-В продакшене собранный фронтенд (`backend/data/wwwroot`) **не** обновляется пересборкой образа после первого старта. Каталог вынесен в named volume, смонтированный в `/app/data/wwwroot` контейнера сайта.
+Статика VitePress и страницы архива версий лежат **не в образе**, а в **named volume** `wwwroot`, смонтированном в контейнер сайта. После первого запуска пересборка образа `oscript/backend` содержимое тома **не** обновляет — актуальный фронт публикует пайплайн (стадия **Publish content**). Контейнер сайта при обычном деплое **не пересоздают**.
 
-**Настройка на сервере (один раз):** фрагмент compose — [`deploy/docker-compose.wwwroot-volume.example.yml`](deploy/docker-compose.wwwroot-volume.example.yml). Имя тома на хосте: `<compose_project>_wwwroot` (`docker volume ls`). Переменная `WWWROOT_VOLUME` в `Jenkinsfile` должна совпадать с этим именем.
+#### Что смонтировать в docker-compose
 
-**Поток данных:**
+Эталонный фрагмент: [`deploy/docker-compose.wwwroot-volume.example.yml`](deploy/docker-compose.wwwroot-volume.example.yml). У сервиса сайта нужны **два** тома/монтирования:
+
+| Монтирование | Тип | Путь в контейнере | Назначение |
+|--------------|-----|-------------------|------------|
+| `wwwroot` | named volume | `/app/data/wwwroot` | Собранный VitePress (обновляется Jenkins) |
+| `os_web_content` | named volume | `/var/www` | Релизы OneScript. Внутри тома каталог `oscript.io` (в контейнере `/var/www/oscript.io`): дистрибутивы и `markdown/versions/*.md` |
+
+В секции `volumes` compose объявить тома:
+
+```yaml
+volumes:
+  wwwroot:
+  os_web_content:
+    external: true
+```
+
+Том `os_web_content` уже существует на хосте Docker (его же монтирует Jenkins). Каталог релизов — `oscript.io` внутри тома, в контейнере это `/var/www/oscript.io`.
+
+Имя тома **на хосте** Docker формирует как `<имя_проекта_compose>_wwwroot` (например, при `COMPOSE_PROJECT_NAME=oscript` — `oscript_wwwroot`). Узнать: `docker volume ls | grep wwwroot`.
+
+#### Переменные окружения контейнера сайта
+
+Задаются в compose или в образе (см. [`backend/Dockerfile`](backend/Dockerfile)):
+
+| Переменная | Типичное значение | Назначение |
+|------------|-------------------|------------|
+| `filesDir` | `/var/www/oscript.io` | Каталог `oscript.io` внутри тома `os_web_content` (путь в контейнере; API архива, скачивания) |
+| `server_root` | `/app/data` | Корень данных сервера; внутри — `wwwroot/` |
+
+Порт по умолчанию **3030** (`server.port` в `autumn-properties.json`).
+
+#### Требования к Jenkins
+
+- Агент с меткой **`linux`** и доступом к **docker-сокету** хоста (как для стадии `Create container`).
+- Стадия **Build content** — контейнер `node:lts-alpine3.20` с той же меткой `linux`; том `os_web_content` монтируется в `/var/www` (`args: -v os_web_content:/var/www`). `VITEPRESS_FILES_DIR=/var/www/oscript.io` — путь к каталогу `oscript.io` внутри этого тома.
+
+Переменные в **`Jenkinsfile`** (при необходимости подстроить под сервер):
+
+| Переменная | Где | Значение | Назначение |
+|------------|-----|----------|------------|
+| `VITEPRESS_FILES_DIR` | стадия Build content | `/var/www/oscript.io` | Путь внутри тома `os_web_content`: список версий для страниц архива при `docs:build` |
+| `WWWROOT_VOLUME` | стадия Publish content | имя тома с хоста, напр. `oscript_wwwroot` | Куда `rsync` кладёт сборку; **должно совпадать** с `docker volume ls` |
+
+После смены имени проекта compose обновите `WWWROOT_VOLUME` в репозитории.
+
+#### Первичная настройка инфраструктуры (один раз)
+
+1. В compose сервиса сайта добавить volume `wwwroot` → `/app/data/wwwroot` и том `os_web_content` → `/var/www` (см. таблицу выше).
+2. Релизы лежат в томе `os_web_content`, в каталоге `oscript.io` (в контейнере `/var/www/oscript.io`).
+3. Запустить или пересоздать контейнер сайта с новым монтированием. Если том **пустой**, Docker при первом старте **скопирует** в него `wwwroot` из образа.
+4. Зафиксировать полное имя тома: `docker volume inspect <имя>`.
+5. В [`Jenkinsfile`](Jenkinsfile) выставить `WWWROOT_VOLUME` в это имя.
+6. Если перед сайтом reverse proxy — для HTML отключить агрессивное кеширование (`Cache-Control: no-cache` для `*.html`), иначе новые страницы архива могут не появиться сразу.
+
+#### Обычный деплой (релиз OneScript или правки сайта)
+
+1. Положить новый релиз в том `os_web_content`, каталог `oscript.io` (в контейнере `/var/www/oscript.io`) — API и скачивания обновятся **без** пересборки фронта.
+2. Запустить пайплайн Jenkins (push в репозиторий или вручную):
+   - **Build content** — собирает фронт со списком версий из `VITEPRESS_FILES_DIR`, пишет в `backend/data/wwwroot`, `stash`.
+   - **Publish content** — публикует сборку в named volume; **контейнер сайта не трогать**.
+   - **Create container** — пересобирает образ `oscript/backend` (для новых инсталляций и обновления кода бэкенда); на уже работающий том статики **не влияет**.
+
+Ручной `docker compose up -d --force-recreate` для сайта после каждого релиза **не требуется**.
+
+#### Проверка после публикации
+
+На сервере:
+
+```bash
+chmod +x deploy/verify-wwwroot-publish.sh
+./deploy/verify-wwwroot-publish.sh <WWWROOT_VOLUME> <токен_версии> https://oscript.io
+```
+
+Токен версии в URL архива — как в каталогах (например `2_9_3` для `2.9.3`).
+
+#### Поток данных
 
 ```
-Jenkins (Build content) → backend/data/wwwroot
-       → Publish content → named volume wwwroot → контейнер сайта (/app/data/wwwroot)
+named volume os_web_content
+  oscript.io/  →  в контейнере /var/www/oscript.io
+       ↑ -v os_web_content:/var/www     Jenkins: VITEPRESS_FILES_DIR
+       │                                      ↓
+контейнер сайта ── API/downloads    Build content → backend/data/wwwroot
+       ↑                                      ↓
+named volume wwwroot  ←── Publish content (rsync, docker run + alpine)
+  /app/data/wwwroot
 ```
-
-При первом монтировании пустого тома Docker копирует в него `wwwroot` из образа. Дальнейшие обновления — только через стадию **Publish content**.
 
 ## Навыки Cursor
 

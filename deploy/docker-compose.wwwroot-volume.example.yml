@@ -1,8 +1,13 @@
 # Фрагмент для docker-compose на сервере (правится один раз).
 #
-# Имя тома на хосте: <имя_проекта_compose>_wwwroot
+# Имя тома wwwroot на хосте: <имя_проекта_compose>_wwwroot
 # Узнать: docker volume ls | grep wwwroot
 # Значение WWWROOT_VOLUME в Jenkinsfile должно совпадать с этим именем.
+#
+# Релизы — named volume os_web_content, смонтированный в /var/www.
+# Каталог oscript.io лежит внутри тома; в контейнере это /var/www/oscript.io
+# (filesDir и VITEPRESS_FILES_DIR). Jenkins монтирует тот же том:
+#   args '-v os_web_content:/var/www'
 #
 # При первом запуске с пустым томом Docker копирует в него содержимое
 # /app/data/wwwroot из образа. Дальнейшие обновления контента — только
@@ -13,7 +18,9 @@ services:
     image: oscript/backend
     volumes:
       - wwwroot:/app/data/wwwroot
-      - /var/www/oscript.io:/var/www/oscript.io
+      - os_web_content:/var/www
 
 volumes:
   wwwroot:
+  os_web_content:
+    external: true

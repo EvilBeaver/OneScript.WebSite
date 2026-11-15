@@ -8,6 +8,7 @@ pipeline {
                 docker {
                     image 'node:lts-alpine3.20'
                     label 'linux'
+                    args '-v os_web_content:/var/www'
                 }
             }
 
@@ -28,7 +29,7 @@ pipeline {
             }
             environment {
                 // Имя тома на хосте: <compose_project>_wwwroot (см. deploy/docker-compose.wwwroot-volume.example.yml)
-                WWWROOT_VOLUME = 'oscript_wwwroot'
+                WWWROOT_VOLUME = 'os_wwwroot'
             }
             steps {
                 unstash 'wwwroot'
